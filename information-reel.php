@@ -5,7 +5,7 @@ Plugin Name: Information Reel
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Description: This plugin scroll the entered title, image, and description in your word press website. This is best way to announce your message to user. Live demo availabe in the plugin site.
 Author: Gopi.R
-Version: 6.0
+Version: 6.1
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags: Announcement, Scroller, Message, Scroll, Text scroll, News
@@ -251,7 +251,7 @@ function IR_Control()
 	echo '<p>Text Length:<br><input  style="width: 100px;" type="text" value="';
 	echo $IR_TextLength . '" name="IR_TextLength" id="IR_TextLength" /> (YES/NO)</p>';
 	
-	echo '<p>Fallery Group:<br><input  style="width: 100px;" type="text" value="';
+	echo '<p>Gallery Type:<br><input  style="width: 100px;" type="text" value="';
 	echo $IR_type . '" name="IR_type" id="IR_type" /> </p>';
 	
 	echo '<p>Random Option:<br><input  style="width: 100px;" type="text" value="';

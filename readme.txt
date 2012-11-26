@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags:  Announcement, Scroller, Message, Scroll, Text scroll, News
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 6.0
+Tested up to: 3.5
+Stable tag: 6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -22,7 +22,7 @@ Check official website for live demo [http://www.gopiplus.com/work/2011/04/16/wo
 *   [About author](http://www.gopiplus.com/work/)			
 
 *	Easy installation.  
-*	Easy Customization
+*	Easy Customization.
 *	Easy scroller setting. 
 
 Just drag and drop the "Information Reel" widget to your sidebar location.
@@ -93,6 +93,9 @@ http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 
 == Upgrade Notice ==
 
+= 6.1 =
+Tested upto 3.5
+
 = 6.0 =
 New demo link, www.gopiplus.com
 
@@ -110,6 +113,9 @@ Single quote Bug fixed
 First version
 
 == Changelog ==
+
+= 6.1 =
+Tested upto 3.5
 
 = 6.0 =
 New demo link, www.gopiplus.com
