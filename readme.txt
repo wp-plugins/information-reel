@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-informatio
 Author URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags:  Announcement, Scroller, Message, Scroll, Text scroll, News
-Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 6.1
+Requires at least: 3.4
+Tested up to: 3.6
+Stable tag: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -93,18 +93,23 @@ http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 
 == Upgrade Notice ==
 
+= 7.0 =
+Tested up to 3.6
+Added some security feature.
+New admin look.
+
 = 6.1 =
-Tested upto 3.5
+Tested up to 3.5
 
 = 6.0 =
 New demo link, www.gopiplus.com
 
 = 5.0 =
-Tested upto 3.4
+Tested up to 3.4
 Fixed plugin directory violations issue
 
 = 4.0 =
-Tested upto 3.3
+Tested up to 3.3
 
 = 3.0 =
 Single quote Bug fixed
@@ -114,18 +119,23 @@ First version
 
 == Changelog ==
 
+= 7.0 =
+Tested up to 3.6
+Added some security feature.
+New admin look.
+
 = 6.1 =
-Tested upto 3.5
+Tested up to 3.5
 
 = 6.0 =
 New demo link, www.gopiplus.com
 
 = 5.0 =
-Tested upto 3.4
+Tested up to 3.4
 Fixed plugin directory violations issue
 
 = 4.0 =
-Tested upto 3.3
+Tested up to 3.3
 
 = 3.0 =
 Single quote Bug fixed

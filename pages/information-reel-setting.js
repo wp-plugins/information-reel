@@ -48,6 +48,12 @@ function IR_submit()
 		document.IR_form.IR_desc.focus();
 		return false;
 	}
+	else if(document.IR_form.IR_type.value == "Select")
+	{
+		alert("Please select the content group/type.")
+		document.IR_form.IR_type.focus();
+		return false;
+	}
 	else if(document.IR_form.IR_type.value=="")
 	{
 		alert("Please enter the gallery type.")
@@ -78,14 +84,14 @@ function IR_delete(id)
 {
 	if(confirm("Do you want to delete this record?"))
 	{
-		document.frm_IR_display.action="options-general.php?page=information-reel/information-reel.php&AC=DEL&DID="+id;
+		document.frm_IR_display.action="options-general.php?page=information-reel&ac=del&did="+id;
 		document.frm_IR_display.submit();
 	}
 }	
 
 function IR_redirect()
 {
-	window.location = "options-general.php?page=information-reel/information-reel.php";
+	window.location = "options-general.php?page=information-reel";
 }
 
 function IR_help()
