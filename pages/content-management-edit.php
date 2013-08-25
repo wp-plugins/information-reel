@@ -1,3 +1,9 @@
+<?php
+// Stop direct call
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { 
+	die('You are not allowed to call this page directly.'); 
+}
+?>
 <div class="wrap">
 <?php
 $did = isset($_GET['did']) ? $_GET['did'] : '0';
@@ -132,10 +138,10 @@ if ($IR_error_found == FALSE && strlen($IR_success) > 0)
       </select>
       <p>Do you want to open link in new window?</p>
       <label for="tag-title">Enter title</label>
-      <input name="IR_title" type="text" id="IR_title" value="<?php echo $form['IR_title']; ?>" size="125" />
+      <input name="IR_title" type="text" id="IR_title" value="<?php echo esc_html(stripslashes($form['IR_title'])); ?>" size="125" />
       <p>Enter reel title in this box..</p>
 	  <label for="tag-title">Enter description</label>
-      <input name="IR_desc" type="text" id="IR_desc" value="<?php echo $form['IR_desc']; ?>" size="125" maxlength="1024" />
+      <input name="IR_desc" type="text" id="IR_desc" value="<?php echo esc_html(stripslashes($form['IR_desc'])); ?>" size="125" maxlength="1024" />
       <p>Enter reel content in this box.</p>
       <label for="tag-select-gallery-group">Select content type</label>
       <select name="IR_type" id="IR_type">
@@ -182,9 +188,9 @@ if ($IR_error_found == FALSE && strlen($IR_success) > 0)
       <input name="IR_id" id="IR_id" type="hidden" value="">
       <input type="hidden" name="IR_form_submit" value="yes"/>
       <p class="submit">
-        <input name="publish" lang="publish" class="button-primary" value="Update Details" type="submit" />
-        <input name="publish" lang="publish" class="button-primary" onclick="IR_redirect()" value="Cancel" type="button" />
-        <input name="Help" lang="publish" class="button-primary" onclick="IR_help()" value="Help" type="button" />
+        <input name="publish" lang="publish" class="button" value="Update Details" type="submit" />
+        <input name="publish" lang="publish" class="button" onclick="IR_redirect()" value="Cancel" type="button" />
+        <input name="Help" lang="publish" class="button" onclick="IR_help()" value="Help" type="button" />
       </p>
 	  <?php wp_nonce_field('IR_form_edit'); ?>
     </form>

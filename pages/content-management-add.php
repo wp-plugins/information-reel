@@ -1,3 +1,9 @@
+<?php
+// Stop direct call
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { 
+	die('You are not allowed to call this page directly.'); 
+}
+?>
 <div class="wrap">
 <?php
 $IR_errors = array();
@@ -152,9 +158,9 @@ if ($IR_error_found == FALSE && strlen($IR_success) > 0)
       <input name="IR_id" id="IR_id" type="hidden" value="">
       <input type="hidden" name="IR_form_submit" value="yes"/>
       <p class="submit">
-        <input name="publish" lang="publish" class="button-primary" value="Insert Details" type="submit" />
-        <input name="publish" lang="publish" class="button-primary" onclick="IR_redirect()" value="Cancel" type="button" />
-        <input name="Help" lang="publish" class="button-primary" onclick="IR_help()" value="Help" type="button" />
+        <input name="publish" lang="publish" class="button" value="Insert Details" type="submit" />
+        <input name="publish" lang="publish" class="button" onclick="IR_redirect()" value="Cancel" type="button" />
+        <input name="Help" lang="publish" class="button" onclick="IR_help()" value="Help" type="button" />
       </p>
 	  <?php wp_nonce_field('IR_form_add'); ?>
     </form>

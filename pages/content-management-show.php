@@ -1,4 +1,9 @@
 <?php
+// Stop direct call
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { 
+	die('You are not allowed to call this page directly.'); 
+}
+
 // Form submitted, check the data
 if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
 {
@@ -63,7 +68,7 @@ if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
             <th class="check-column" scope="row"><input type="checkbox" name="IR_group_item[]" /></th>
 			<th scope="col">Title</th>
 			<th scope="col">Description</th>
-			<th scope="col">Type</th>
+			<th scope="col">Group</th>
 			<th scope="col">Status</th>
 			<th scope="col">Order</th>
           </tr>
@@ -73,7 +78,7 @@ if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
             <th class="check-column" scope="row"><input type="checkbox" name="IR_group_item[]" /></th>
 			<th scope="col">Title</th>
 			<th scope="col">Description</th>
-			<th scope="col">Type</th>
+			<th scope="col">Group</th>
 			<th scope="col">Status</th>
 			<th scope="col">Order</th>
           </tr>
@@ -119,18 +124,15 @@ if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
 		<?php wp_nonce_field('IR_form_show'); ?>
 		<input type="hidden" name="frm_IR_display" value="yes"/>
       </form>	
-	  <div class="tablenav">
+	  <div>
 	  <h2>
-	  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=information-reel&amp;ac=add">Add New</a>
-	  <!--<a class="button add-new-h2" href="<?php //echo get_option('siteurl'); ?>/wp-admin/admin.php?page=information-reel&amp;ac=set">Widget setting</a>-->
-	  <a class="button add-new-h2" target="_blank" href="<?php echo WP_IR_FAV; ?>">Help</a>
+		  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=information-reel&amp;ac=add">Add New</a>
+		  <a class="button add-new-h2" target="_blank" href="<?php echo WP_IR_FAV; ?>">Help</a>
 	  </h2>
 	  </div>
-	  <br />
-	<h3>Plugin configuration option</h3>
-	<ul>
-		<li>Go to widget link under Appearance tab, Drag and drop <b>Information Reel</b> into your side bar.</li>
-	</ul>
-	  <p class="description"><?php echo WP_IR_LINK; ?></p>
+		<h3>Plugin configuration option</h3>
+		<ul>
+			<li>Drag and drop the widget to your sidebar. <?php echo WP_IR_LINK; ?></li>
+		</ul>
 	</div>
 </div>

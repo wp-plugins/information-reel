@@ -5,7 +5,7 @@ Plugin Name: Information Reel
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Description: This plugin scroll the entered title, image, and description in your word press website. This is best way to announce your message to user. Live demo availabe in the plugin site.
 Author: Gopi.R
-Version: 7.0
+Version: 7.1
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags: Announcement, Scroller, Message, Scroll, Text scroll, News
@@ -17,29 +17,84 @@ global $wpdb, $wp_version;
 define("WP_IR_TABLE", $wpdb->prefix . "information_reel");
 define("WP_IR_UNIQUE_NAME", "information-reel");
 define("WP_IR_TITLE", "Information Reel");
-define('WP_IR_LINK', 'Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/">click here</a>');
 define('WP_IR_FAV', 'http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/');
+define('WP_IR_LINK', 'Check official website for more information <a target="_blank" href="'.WP_IR_FAV.'">click here</a>');
 
 function IR_Show() 
 {
+	$arr = array();
+	IR_Show_Widget($arr);
+}
+
+function IR_Show_Widget( $atts ) 
+{
 	global $wpdb;
-	$IRhtml = "";
-	$IRjsjs = "";
-	$IR_x = "";
-	$IR_Height = "";
+	$IRhtml 		= "";
+	$IRjsjs 		= "";
+	$IR_x 			= "";
+	$IR_Height 		= "";
+	$IR_TextLength 	= "";
+	$IR_SameTime 	= "";
+	$IR_Height	 	= "";
+	$IR_type 		= "";
+	$IR_random 		= "";
+
+	if ( is_array( $atts ) )
+	{
+		foreach(array_keys($atts) as $key)
+		{
+			if($key == "IR_TextLength")
+			{
+				$IR_TextLength = $atts["IR_TextLength"];
+			}
+			elseif($key == "IR_SameTime")
+			{
+				$IR_SameTime = $atts["IR_SameTime"];
+			}
+			elseif($key == "IR_Height")
+			{
+				$IR_Height = $atts["IR_Height"];
+			}
+			elseif($key == "IR_type")
+			{
+				$IR_type = $atts["IR_type"];
+			}
+			elseif($key == "IR_random")
+			{
+				$IR_random = $atts["IR_random"];
+			}
+		}
+	}
 	
-	$IR_TextLength = get_option('IR_TextLength');
-	$IR_SameTime = get_option('IR_SameTime');
-	$IR_Height = get_option('IR_Height');
-	$IR_type = get_option('IR_type');
-	$IR_random = get_option('IR_random');
+	if($IR_TextLength == "")
+	{
+		$IR_TextLength = get_option('IR_TextLength');
+	}
+	if($IR_SameTime == "")
+	{
+		$IR_SameTime = get_option('IR_SameTime');
+	}
+	if($IR_Height == "")
+	{
+		$IR_Height = get_option('IR_Height');
+	}
+	if($IR_type == "")
+	{
+		$IR_type = get_option('IR_type');
+	}
+	if($IR_random == "")
+	{
+		$IR_random = get_option('IR_random');
+	}
 	
 	if(!is_numeric($IR_SameTime)){ $IR_SameTime = 5; }
 	if(!is_numeric($IR_Height)){ $IR_Height = 50; }
-	if($IR_type == "" ) { $IR_type="widget"; }
 
 	$sSql = "select IR_path,IR_link,IR_target,IR_title,IR_desc from ".WP_IR_TABLE." where 1=1 and IR_status='YES'";
-	$sSql = $sSql . " and IR_type='".$IR_type."'";
+	if($IR_type <> "" )
+	{
+		$sSql = $sSql . " and IR_type='".$IR_type."'";
+	}
 	if($IR_random == "YES"){ $sSql = $sSql . " ORDER BY RAND()"; }else{ $sSql = $sSql . " ORDER BY IR_order"; }
 	$IR_data = $wpdb->get_results($sSql);
 	
@@ -58,9 +113,9 @@ function IR_Show()
 		$IRhtml = "";
 		foreach ( $IR_data as $IR_data ) 
 		{
-			$IR_path = mysql_real_escape_string(trim($IR_data->IR_path));
-			$IR_link = mysql_real_escape_string(trim($IR_data->IR_link));
-			$IR_target = mysql_real_escape_string(trim($IR_data->IR_target));
+			$IR_path = trim($IR_data->IR_path);
+			$IR_link = trim($IR_data->IR_link);
+			$IR_target = trim($IR_data->IR_target);
 			$IR_title = trim($IR_data->IR_title);
 			$IR_desc = trim($IR_data->IR_desc);
 			
@@ -82,11 +137,11 @@ function IR_Show()
 				$IRjsjs = "<div class=\'IR-regimage\'>"; 
 				if($IR_link <> "" ) 
 				{ 
-					$IRhtml = $IRhtml . "<a href='$IR_link'>"; 
-					$IRjsjs = $IRjsjs . "<a href=\'$IR_link\'>";
+					$IRhtml = $IRhtml . "<a target='$IR_target' href='$IR_link'>"; 
+					$IRjsjs = $IRjsjs . "<a target=\'$IR_target\' href=\'$IR_link\'>";
 				} 
-				$IRhtml = $IRhtml . "<img src='$IR_path' al='Test' />"; 
-				$IRjsjs = $IRjsjs . "<img src=\'$IR_path\' al=\'Test\' />";
+				$IRhtml = $IRhtml . "<img src='$IR_path' al='' />"; 
+				$IRjsjs = $IRjsjs . "<img src=\'$IR_path\' al=\'\' />";
 				if($IR_link <> "" ) 
 				{ 
 					$IRhtml = $IRhtml . "</a>"; 
@@ -102,8 +157,8 @@ function IR_Show()
 				$IRjsjs = $IRjsjs . "<div style=\'padding-left:4px;\'><strong>";				
 				if($IR_link <> "" ) 
 				{ 
-					$IRhtml = $IRhtml . "<a href='$IR_link'>"; 
-					$IRjsjs = $IRjsjs . "<a href=\'$IR_link\'>";
+					$IRhtml = $IRhtml . "<a target='$IR_target' href='$IR_link'>"; 
+					$IRjsjs = $IRjsjs . "<a target=\'$IR_target\' href=\'$IR_link\'>";
 				} 
 				$IRhtml = $IRhtml . $IR_title;
 				$IRjsjs = $IRjsjs . $IR_title;
@@ -140,10 +195,9 @@ function IR_Show()
 			$IR_count = $IR_count;
 			$IR_Height_New = ($IR_count  * $IR_Height);
 		}
-
 		?>
 <div style="padding-top:8px;padding-bottom:8px;">
-  <div style="text-align:left;vertical-align:middle;text-decoration: none;overflow: hidden; position: relative; margin-left: 3px; height: <?php echo @$IR_height; ?>px;" id="IRHolder"> <?php echo $IRhtml; ?> </div>
+  <div style="text-align:left;vertical-align:middle;text-decoration: none;overflow: hidden; position: relative; margin-left: 3px; height: <?php echo @$IR_Height; ?>px;" id="IRHolder"> <?php echo $IRhtml; ?> </div>
 </div>
 <script type="text/javascript">
 		var IR	= new Array();
@@ -214,102 +268,6 @@ function IR_Install()
 	add_option('IR_random', "YES");
 }
 
-function IR_Control() 
-{
-	global $wpdb;
-	$IR_Title = get_option('IR_Title');
-	$IR_Height = get_option('IR_Height');
-	$IR_SameTime = get_option('IR_SameTime');
-	$IR_TextLength = get_option('IR_TextLength');
-	$IR_type = get_option('IR_type');
-	$IR_random = get_option('IR_random');
-	
-	if (@$_POST['IR_submit']) 
-	{
-		
-		//	Just security thingy that wordpress offers us
-		check_admin_referer('IR_form_show');
-			
-		$IR_Title = stripslashes($_POST['IR_Title']);
-		$IR_Height = stripslashes($_POST['IR_Height']);
-		$IR_SameTime = stripslashes($_POST['IR_SameTime']);
-		$IR_TextLength = stripslashes($_POST['IR_TextLength']);
-		$IR_type = stripslashes($_POST['IR_type']);
-		$IR_random = stripslashes($_POST['IR_random']);
-		
-		update_option('IR_Title', $IR_Title );
-		update_option('IR_Height', $IR_Height );
-		update_option('IR_SameTime', $IR_SameTime );
-		update_option('IR_TextLength', $IR_TextLength );
-		update_option('IR_type', $IR_type );
-		update_option('IR_random', $IR_random );
-		
-	}
-	
-	echo '<p>Title:<br><input  style="width: 200px;" type="text" value="';
-	echo $IR_Title . '" name="IR_Title" id="IR_Title" /></p>';
-	
-	echo '<p>Height:<br><input  style="width: 100px;" type="text" value="';
-	echo $IR_Height . '" name="IR_Height" id="IR_Height"  maxlength="3" /> (Only number)</p>';
-	
-	echo '<p>Same Time Display:<br><input  style="width: 100px;" type="text" value="';
-	echo $IR_SameTime . '" name="IR_SameTime" id="IR_SameTime" maxlength="2"  /> (Only number)</p>';
-	
-	echo '<p>Text Length:<br><input  style="width: 100px;" type="text" value="';
-	echo $IR_TextLength . '" name="IR_TextLength" id="IR_TextLength" maxlength="3"  /> (Only number)</p>';
-	
-	echo '<p>Gallery Type:<br>';
-	
-	?>
-	<select name="IR_type" id="IR_type">
-		<?php
-		$sSql = "SELECT distinct(IR_type) as IR_type FROM `".WP_IR_TABLE."` order by IR_type";
-		$myDistinctData = array();
-		$arrDistinctDatas = array();
-		$myDistinctData = $wpdb->get_results($sSql, ARRAY_A);
-		$i = 0;
-		foreach ($myDistinctData as $DistinctData)
-		{
-			$arrDistinctData[$i]["IR_type"] = strtoupper($DistinctData['IR_type']);
-			$i = $i+1;
-		}
-		for($j=$i; $j<$i+5; $j++)
-		{
-			$arrDistinctData[$j]["IR_type"] = "GROUP" . $j;
-		}
-		$arrDistinctDatas = array_unique($arrDistinctData, SORT_REGULAR);
-		foreach ($arrDistinctDatas as $arrDistinct)
-		{
-			if(strtoupper($IR_type) == strtoupper($arrDistinct["IR_type"]) ) 
-			{ 
-				$selected = "selected='selected'"; 
-			}
-			?>
-			<option value='<?php echo $arrDistinct["IR_type"]; ?>' <?php echo $selected; ?>><?php echo strtoupper($arrDistinct["IR_type"]); ?></option>
-			<?php
-			$selected = "";
-		}
-		?>
-     </select>
-	 </p>
-	<?php
-	wp_nonce_field('IR_form_show');
-	echo '<p>Random Option:<br><input  style="width: 100px;" type="text" value="';
-	echo $IR_random . '" name="IR_random" id="IR_random"  maxlength="3"  /> (YES/NO)</p>';
-	
-	echo '<input type="hidden" id="IR_submit" name="IR_submit" value="1" />';
-}
-
-function IR_Widget($args) 
-{
-	extract($args);
-	echo $before_widget . $before_title;
-	echo get_option('IR_Title');
-	echo $after_title;
-	IR_Show();
-	echo $after_widget;
-}
-
 function IR_Admin_Options() 
 {
 	global $wpdb;
@@ -336,22 +294,24 @@ function IR_Add_To_Menu()
 	add_options_page('Information Reel', 'Information Reel', 'manage_options', 'information-reel', 'IR_Admin_Options' );
 }
 
-function IR_Init()
-{
-	if(function_exists('wp_register_sidebar_widget')) 
-	{
-		wp_register_sidebar_widget('Information-Reel', 'Information Reel', 'IR_Widget');
-	}
-	
-	if(function_exists('wp_register_widget_control')) 
-	{
-		wp_register_widget_control('Information-Reel', array('Information Reel', 'widgets'), 'IR_Control');
-	} 
-}
-
 function IR_Deactivation() 
 {
 	// No action required.
+}
+
+function IR_Uninstall()
+{
+	global $wpdb;
+	delete_option('IR_Title');
+	delete_option('IR_Height');
+	delete_option('IR_SameTime');
+	delete_option('IR_TextLength');
+	delete_option('IR_type');
+	delete_option('IR_random');
+	if($wpdb->get_var("show tables like '". WP_IR_TABLE . "'") == WP_IR_TABLE) 
+	{
+		$wpdb->query("DROP TABLE ". WP_IR_TABLE);
+	}
 }
 
 if (is_admin()) 
@@ -367,8 +327,152 @@ function IR_add_javascript_files()
 	}	
 }
 
+class IR_widget_register extends WP_Widget 
+{
+	function __construct() 
+	{
+		$widget_ops = array('classname' => 'ir_widget', 'description' => __('Information Reel'), 'information-reel');
+		parent::__construct('InformationReel', __('Information Reel', 'information-reel'), $widget_ops);
+	}
+	
+	function widget( $args, $instance ) 
+	{
+		extract( $args, EXTR_SKIP );
+		$IR_Title 		= apply_filters( 'widget_title', empty( $instance['IR_Title'] ) ? '' : $instance['IR_Title'], $instance, $this->id_base );
+		$IR_Height		= $instance['IR_Height'];
+		$IR_SameTime	= $instance['IR_SameTime'];
+		$IR_TextLength	= $instance['IR_TextLength'];
+		$IR_type		= $instance['IR_type'];
+		$IR_random		= $instance['IR_random'];
+		
+		echo $args['before_widget'];
+		if ( ! empty( $IR_Title ) )
+		{
+			echo $args['before_title'] . $IR_Title . $args['after_title'];
+		}
+		
+		// Call widget method
+		$arr = array();
+		$arr["IR_TextLength"] = $IR_TextLength;
+		$arr["IR_SameTime"] = $IR_SameTime;
+		$arr["IR_Height"] = $IR_Height;
+		$arr["IR_type"] = $IR_type;
+		$arr["IR_random"] = $IR_random;
+		IR_Show_Widget($arr);
+		// Call widget method
+		echo $args['after_widget'];
+	}
+	
+	function update( $new_instance, $old_instance ) 
+	{
+		$instance 					= $old_instance;
+		$instance['IR_Title'] 		= ( ! empty( $new_instance['IR_Title'] ) ) ? strip_tags( $new_instance['IR_Title'] ) : '';
+		$instance['IR_Height'] 		= ( ! empty( $new_instance['IR_Height'] ) ) ? strip_tags( $new_instance['IR_Height'] ) : '';
+		$instance['IR_SameTime'] 	= ( ! empty( $new_instance['IR_SameTime'] ) ) ? strip_tags( $new_instance['IR_SameTime'] ) : '';
+		$instance['IR_TextLength'] 	= ( ! empty( $new_instance['IR_TextLength'] ) ) ? strip_tags( $new_instance['IR_TextLength'] ) : '';
+		$instance['IR_type'] 		= ( ! empty( $new_instance['IR_type'] ) ) ? strip_tags( $new_instance['IR_type'] ) : '';
+		$instance['IR_random'] 		= ( ! empty( $new_instance['IR_random'] ) ) ? strip_tags( $new_instance['IR_random'] ) : '';
+		return $instance;
+	}
+	
+	function form( $instance ) 
+	{
+		$defaults = array(
+			'IR_Title' 		=> '',
+            'IR_Height' 	=> '',
+            'IR_SameTime' 	=> '',
+            'IR_TextLength' => '',
+			'IR_type' 		=> '',
+			'IR_random' 	=> ''
+        );
+		$instance 		= wp_parse_args( (array) $instance, $defaults);
+        $IR_Title 		= $instance['IR_Title'];
+        $IR_Height 		= $instance['IR_Height'];
+        $IR_SameTime 	= $instance['IR_SameTime'];
+        $IR_TextLength 	= $instance['IR_TextLength'];
+		$IR_type 		= $instance['IR_type'];
+		$IR_random 		= $instance['IR_random'];
+		?>
+		<p>
+            <label for="<?php echo $this->get_field_id('IR_Title'); ?>"><?php _e('Title', 'information-reel'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('IR_Title'); ?>" name="<?php echo $this->get_field_name('IR_Title'); ?>" type="text" value="<?php echo $IR_Title; ?>" />
+        </p>
+		<p>
+            <label for="<?php echo $this->get_field_id('IR_Height'); ?>"><?php _e('Height', 'information-reel'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('IR_Height'); ?>" name="<?php echo $this->get_field_name('IR_Height'); ?>" type="text" value="<?php echo $IR_Height; ?>" maxlength="3" />
+        </p>
+		<p>
+            <label for="<?php echo $this->get_field_id('IR_SameTime'); ?>"><?php _e('Same time display', 'information-reel'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('IR_SameTime'); ?>" name="<?php echo $this->get_field_name('IR_SameTime'); ?>" type="text" value="<?php echo $IR_SameTime; ?>" maxlength="3" />
+        </p>
+		<p>
+            <label for="<?php echo $this->get_field_id('IR_TextLength'); ?>"><?php _e('Text length', 'information-reel'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('IR_TextLength'); ?>" name="<?php echo $this->get_field_name('IR_TextLength'); ?>" type="text" value="<?php echo $IR_TextLength; ?>" maxlength="3" />
+        </p>
+		<p>
+            <label for="<?php echo $this->get_field_id('IR_type'); ?>"><?php _e('Content group', 'information-reel'); ?></label>
+			<select class="" id="<?php echo $this->get_field_id('IR_type'); ?>" name="<?php echo $this->get_field_name('IR_type'); ?>" style="width:130px;">
+				<option value="">Select</option>
+				<?php
+				$arrData = array();
+				$arrData = $this->IR_loadtype();
+				if(count($arrData) > 0)
+				{
+					foreach ($arrData as $arrData)
+					{
+						?><option value="<?php echo $arrData["IR_type"]; ?>" <?php $this->IR_render_selected($arrData["IR_type"] == $IR_type); ?>><?php echo $arrData["IR_type"]; ?></option><?php
+					}
+				}
+				?>
+			</select>
+        </p>
+		<p>
+            <label for="<?php echo $this->get_field_id('IR_random'); ?>"><?php _e('Random order', 'information-reel'); ?></label>
+			<select class="" id="<?php echo $this->get_field_id('IR_random'); ?>" name="<?php echo $this->get_field_name('IR_random'); ?>" style="width:130px;">
+				<option value="">Select</option>
+				<option value="YES" <?php $this->IR_render_selected($IR_random=='YES'); ?>>YES</option>
+				<option value="NO" <?php $this->IR_render_selected($IR_random=='NO'); ?>>NO</option>
+			</select>
+        </p>
+		<p>For more information <a target="_blank" href="<?php echo WP_IR_FAV; ?>">click here</a></p>
+		<?php
+	}
+	
+	function IR_render_selected($var) 
+	{
+		if ($var==1 || $var==true) 
+		{
+			echo 'selected="selected"';
+		}
+	}
+	
+	function IR_loadtype() 
+	{
+		global $wpdb;
+		$arrData = array();
+		$sSql 	 = "SELECT distinct(IR_type) as IR_type FROM ".WP_IR_TABLE." order by IR_type";
+		$myData  = $wpdb->get_results($sSql, ARRAY_A);
+		$i 		 = 0;
+		if(count($myData) > 0 )
+		{
+			foreach ($myData as $data)
+			{
+				$arrData[$i]["IR_type"] = stripslashes($data['IR_type']);
+				$i=$i+1;
+			}
+		}
+		return $arrData;
+	}
+}
+
+function IR_widget_loading()
+{
+	register_widget( 'IR_widget_register' );
+}
+
 add_action('init', 'IR_add_javascript_files');
-add_action("plugins_loaded", "IR_Init");
+add_action( 'widgets_init', 'IR_widget_loading');
 register_activation_hook(__FILE__, 'IR_Install');
 register_deactivation_hook(__FILE__, 'IR_Deactivation');
+register_uninstall_hook(__FILE__, 'IR_Uninstall' );
 ?>
