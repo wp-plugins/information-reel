@@ -19,7 +19,7 @@ $result = $wpdb->get_var($sSql);
 
 if ($result != '1')
 {
-	?><div class="error fade"><p><strong>Oops, selected details doesn't exist.</strong></p></div><?php
+	?><div class="error fade"><p><strong><?php _e('Oops, selected details doesnt exist.', 'information-reel'); ?></strong></p></div><?php
 }
 else
 {
@@ -59,14 +59,14 @@ if (isset($_POST['IR_form_submit']) && $_POST['IR_form_submit'] == 'yes')
 	$form['IR_path'] = isset($_POST['IR_path']) ? $_POST['IR_path'] : '';
 	if ($form['IR_path'] == '')
 	{
-		$IR_errors[] = __('Please enter the image path.', WP_IR_UNIQUE_NAME);
+		$IR_errors[] = __('Please enter the image path.', 'information-reel');
 		$IR_error_found = TRUE;
 	}
 
 	$form['IR_link'] = isset($_POST['IR_link']) ? $_POST['IR_link'] : '';
 	if ($form['IR_link'] == '')
 	{
-		$IR_errors[] = __('Please enter the target link.', WP_IR_UNIQUE_NAME);
+		$IR_errors[] = __('Please enter the target link.', 'information-reel');
 		$IR_error_found = TRUE;
 	}
 	
@@ -96,7 +96,7 @@ if (isset($_POST['IR_form_submit']) && $_POST['IR_form_submit'] == 'yes')
 			);
 		$wpdb->query($sSql);
 		
-		$IR_success = 'Details was successfully updated.';
+		$IR_success = __('Details was successfully updated.', 'information-reel');
 	}
 }
 
@@ -110,40 +110,46 @@ if ($IR_error_found == TRUE && isset($IR_errors[0]) == TRUE)
 }
 if ($IR_error_found == FALSE && strlen($IR_success) > 0)
 {
-?>
-  <div class="updated fade">
-    <p><strong><?php echo $IR_success; ?> <a href="<?php echo get_option('siteurl'); ?>/wp-admin/admin.php?page=information-reel">Click here</a> to view the details</strong></p>
-  </div>
-  <?php
+	?>
+	<div class="updated fade">
+		<p>
+			<strong>
+				<?php echo $IR_success; ?> 
+				<a href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=information-reel"><?php _e('Click here', 'information-reel'); ?></a>
+				<?php _e(' to view the details', 'information-reel'); ?>
+			</strong>
+		</p>
+	</div>
+	<?php
 }
 ?>
 <script language="JavaScript" src="<?php echo get_option('siteurl'); ?>/wp-content/plugins/information-reel/pages/information-reel-setting.js"></script>
 <div class="form-wrap">
 	<div id="icon-edit" class="icon32 icon32-posts-post"><br></div>
-	<h2><?php echo WP_IR_TITLE; ?></h2>
+	<h2><?php _e(WP_IR_TITLE, 'information-reel'); ?></h2>
 	<form name="IR_form" method="post" action="#" onsubmit="return IR_submit()"  >
-      <h3>Edit content</h3>
-      <label for="tag-image">Enter image path</label>
+      <h3><?php _e('Edit content', 'information-reel'); ?></h3>
+      <label for="tag-image"><?php _e('Enter image path', 'information-reel'); ?></label>
       <input name="IR_path" type="text" id="IR_path" value="<?php echo $form['IR_path']; ?>" size="125" />
-      <p>Where is the picture located on the internet</p>
-      <label for="tag-link">Enter target link</label>
+      <p><?php _e('Where is the picture located on the internet', 'information-reel'); ?></p>
+      <label for="tag-link"><?php _e('Enter target link', 'information-reel'); ?></label>
       <input name="IR_link" type="text" id="IR_link" value="<?php echo $form['IR_link']; ?>" size="125" />
-      <p>When someone clicks on the picture, where do you want to send them</p>
-      <label for="tag-target">Enter target option</label>
+      <p><?php _e('When someone clicks on the picture, where do you want to send them', 'information-reel'); ?></p>
+      <label for="tag-target"><?php _e('Enter target option', 'information-reel'); ?></label>
       <select name="IR_target" id="IR_target">
         <option value='_blank' <?php if($form['IR_target']=='_blank') { echo 'selected' ; } ?>>_blank</option>
         <option value='_parent' <?php if($form['IR_target']=='_parent') { echo 'selected' ; } ?>>_parent</option>
         <option value='_self' <?php if($form['IR_target']=='_self') { echo 'selected' ; } ?>>_self</option>
         <option value='_new' <?php if($form['IR_target']=='_new') { echo 'selected' ; } ?>>_new</option>
       </select>
-      <p>Do you want to open link in new window?</p>
-      <label for="tag-title">Enter title</label>
+      <p><?php _e('Do you want to open link in new window?', 'information-reel'); ?></p>
+      <label for="tag-title"><?php _e('Enter title', 'information-reel'); ?></label>
       <input name="IR_title" type="text" id="IR_title" value="<?php echo esc_html(stripslashes($form['IR_title'])); ?>" size="125" />
-      <p>Enter reel title in this box..</p>
-	  <label for="tag-title">Enter description</label>
+      <p><?php _e('Enter reel title in this box.', 'information-reel'); ?></p>
+	  <label for="tag-title"><?php _e('Enter description', 'information-reel'); ?></label>
       <input name="IR_desc" type="text" id="IR_desc" value="<?php echo esc_html(stripslashes($form['IR_desc'])); ?>" size="125" maxlength="1024" />
-      <p>Enter reel content in this box.</p>
-      <label for="tag-select-gallery-group">Select content type</label>
+      <p><?php _e('Enter reel content in this box.', 'information-reel'); ?></p>
+      <label for="tag-select-gallery-group"><?php _e('Select content type', 'information-reel'); ?></label>
       <select name="IR_type" id="IR_type">
 	  <option value='Select'>Select</option>
 		<?php
@@ -175,25 +181,28 @@ if ($IR_error_found == FALSE && strlen($IR_success) > 0)
 		}
 		?>
       </select>
-      <p>This is to group the content. Select your option to group the content.</p>
-      <label for="tag-display-status">Display status</label>
+      <p><?php _e('This is to group the content. Select your option to group the content.', 'information-reel'); ?></p>
+      <label for="tag-display-status"><?php _e('Display status', 'information-reel'); ?></label>
       <select name="IR_status" id="IR_status">
         <option value='YES' <?php if($form['IR_status']=='YES') { echo 'selected' ; } ?>>Yes</option>
         <option value='NO' <?php if($form['IR_status']=='NO') { echo 'selected' ; } ?>>No</option>
       </select>
-      <p>Do you want the content to show in your reel?</p>
-      <label for="tag-display-order">Display order</label>
+      <p><?php _e('Do you want the content to show in your reel?', 'information-reel'); ?></p>
+      <label for="tag-display-order"><?php _e('Display order', 'information-reel'); ?></label>
       <input name="IR_order" type="text" id="IR_order" size="10" value="<?php echo $form['IR_order']; ?>" maxlength="3" />
-      <p>Content display order in the reel. should it come 1st, 2nd, 3rd, etc.</p>
+      <p><?php _e('Content display order in the reel. should it come 1st, 2nd, 3rd, etc.', 'information-reel'); ?></p>
       <input name="IR_id" id="IR_id" type="hidden" value="">
       <input type="hidden" name="IR_form_submit" value="yes"/>
       <p class="submit">
-        <input name="publish" lang="publish" class="button" value="Update Details" type="submit" />
-        <input name="publish" lang="publish" class="button" onclick="IR_redirect()" value="Cancel" type="button" />
-        <input name="Help" lang="publish" class="button" onclick="IR_help()" value="Help" type="button" />
+        <input name="publish" lang="publish" class="button" value="<?php _e('Update Details', 'information-reel'); ?>" type="submit" />
+        <input name="publish" lang="publish" class="button" onclick="IR_redirect()" value="<?php _e('Cancel', 'information-reel'); ?>" type="button" />
+        <input name="Help" lang="publish" class="button" onclick="IR_help()" value="<?php _e('Help', 'information-reel'); ?>" type="button" />
       </p>
 	  <?php wp_nonce_field('IR_form_edit'); ?>
     </form>
 </div>
-<p class="description"><?php echo WP_IR_LINK; ?></p>
+<p class="description">
+	<?php _e('Check official website for more information', 'information-reel'); ?>
+	<a target="_blank" href="<?php echo WP_IR_FAV; ?>"><?php _e('click here', 'information-reel'); ?></a>
+</p>
 </div>

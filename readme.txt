@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags:  Announcement, Scroller, Message, Scroll, Text scroll, News
 Requires at least: 3.4
-Tested up to: 3.6
-Stable tag: 7.1
+Tested up to: 3.8
+Stable tag: 8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -67,6 +67,12 @@ Q11. Widget setting default form link?
 
 == Upgrade Notice ==
 
+= 8.0 =
+
+1. Tested up to 3.8 (Beta)
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (information-reel.po) available in the languages folder. Translators Welcome
+
 = 7.1 =
 
 1. Added some security feature.
@@ -105,6 +111,12 @@ Tested up to 3.5
 1. First version
 
 == Changelog ==
+
+= 8.0 =
+
+1. Tested up to 3.8 (Beta)
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (information-reel.po) available in the languages folder. Translators Welcome
 
 = 7.1 =
 

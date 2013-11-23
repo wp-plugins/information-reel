@@ -5,7 +5,7 @@ Plugin Name: Information Reel
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Description: This plugin scroll the entered title, image, and description in your word press website. This is best way to announce your message to user. Live demo availabe in the plugin site.
 Author: Gopi.R
-Version: 7.1
+Version: 8.0
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags: Announcement, Scroller, Message, Scroll, Text scroll, News
@@ -13,12 +13,11 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-global $wpdb, $wp_version;
+global $wpdb, $wp_version, $ir_db_version;
 define("WP_IR_TABLE", $wpdb->prefix . "information_reel");
-define("WP_IR_UNIQUE_NAME", "information-reel");
 define("WP_IR_TITLE", "Information Reel");
 define('WP_IR_FAV', 'http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/');
-define('WP_IR_LINK', 'Check official website for more information <a target="_blank" href="'.WP_IR_FAV.'">click here</a>');
+$ir_db_version = "8.0";
 
 function IR_Show() 
 {
@@ -222,44 +221,65 @@ function IR_Show_Widget( $atts )
 	}
 	else
 	{
-		echo "<div style='padding-bottom:5px;padding-top:5px;'>No data available! Please check widget setting.</div>";
+		echo "<div style='padding-bottom:5px;padding-top:5px;'>";
+		_e("No data available! Please check widget setting.", 'information-reel');
+		echo "</div>";
 	}
 }
 
 function IR_Install() 
 {
 	global $wpdb;
-
-	if($wpdb->get_var("show tables like '". WP_IR_TABLE . "'") != WP_IR_TABLE) 
+	global $ir_db_version;
+	$IR_pluginversion = "";
+	$IR_tableexists = "YES";
+	$IR_pluginversion = get_option("IR_pluginversion");
+	
+	if($wpdb->get_var("show tables like '". WP_IR_TABLE . "'") != WP_IR_TABLE)
 	{
-		$sSql = "CREATE TABLE IF NOT EXISTS `". WP_IR_TABLE . "` (";
-		$sSql = $sSql . "`IR_id` INT NOT NULL AUTO_INCREMENT ,";
-		$sSql = $sSql . "`IR_path` TEXT CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ,";
-		$sSql = $sSql . "`IR_link` TEXT CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ,";
-		$sSql = $sSql . "`IR_target` VARCHAR( 50 ) NOT NULL ,";
-		$sSql = $sSql . "`IR_title` VARCHAR( 200 ) NOT NULL ,";
-		$sSql = $sSql . "`IR_desc` VARCHAR( 1024 ) NOT NULL ,";
-		$sSql = $sSql . "`IR_order` INT NOT NULL ,";
-		$sSql = $sSql . "`IR_status` VARCHAR( 10 ) NOT NULL ,";
-		$sSql = $sSql . "`IR_type` VARCHAR( 100 ) NOT NULL ,";
-		$sSql = $sSql . "`IR_date` INT NOT NULL ,";
-		$sSql = $sSql . "PRIMARY KEY ( `IR_id` )";
-		$sSql = $sSql . ")";
-		$wpdb->query($sSql);
-		$sSql = "INSERT INTO `". WP_IR_TABLE . "` (`IR_path`, `IR_link`, `IR_target` , `IR_title` , `IR_desc` , `IR_order` , `IR_status` , `IR_type` , `IR_date`)"; 
+		$IR_tableexists = "NO";
+	}
+	
+	if(($IR_tableexists == "NO") || ($IR_pluginversion != $ir_db_version)) 
+	{
+		$sSql = "CREATE TABLE ". WP_IR_TABLE . " (
+			 IR_id mediumint(9) NOT NULL AUTO_INCREMENT,
+			 IR_path VARCHAR(1024) DEFAULT '' NOT NULL,
+			 IR_link VARCHAR(1024) DEFAULT '#' NOT NULL,
+			 IR_target VARCHAR(1024) DEFAULT '' NOT NULL,
+			 IR_title text NOT NULL,	 
+			 IR_desc text NOT NULL,
+			 IR_order int(11) NOT NULL default '0',
+			 IR_status char(3) NOT NULL default 'YES',
+			 IR_type VARCHAR(100) DEFAULT 'GROUP1' NOT NULL,
+			 IR_date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			 UNIQUE KEY IR_id (IR_id)
+		  ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+  		dbDelta( $sSql );
+		
+		if($IR_pluginversion == "")
+		{
+			add_option('IR_pluginversion', "8.0");
+		}
+		else
+		{
+			update_option( "IR_pluginversion", $ir_db_version );
+		}
+		
+		$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
 		$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_1.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','1', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
-		$sSql = "INSERT INTO `". WP_IR_TABLE . "` (`IR_path`, `IR_link`, `IR_target` , `IR_title` , `IR_desc` , `IR_order` , `IR_status` , `IR_type` , `IR_date`)"; 
+		$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
 		$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_2.jpg','#','_blank','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','2', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
-		$sSql = "INSERT INTO `". WP_IR_TABLE . "` (`IR_path`, `IR_link`, `IR_target` , `IR_title` , `IR_desc` , `IR_order` , `IR_status` , `IR_type` , `IR_date`)"; 
+		$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
 		$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_3.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','3', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
-		$sSql = "INSERT INTO `". WP_IR_TABLE . "` (`IR_path`, `IR_link`, `IR_target` , `IR_title` , `IR_desc` , `IR_order` , `IR_status` , `IR_type` , `IR_date`)"; 
+		$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
 		$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_4.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','4', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 	}
-	
 	add_option('IR_Title', "Information Reel");
 	add_option('IR_Height', "160");
 	add_option('IR_SameTime', "3");
@@ -291,7 +311,7 @@ function IR_Admin_Options()
 
 function IR_Add_To_Menu() 
 {
-	add_options_page('Information Reel', 'Information Reel', 'manage_options', 'information-reel', 'IR_Admin_Options' );
+	add_options_page(__('Information Reel', 'information-reel'), __('Information Reel', 'information-reel'), 'manage_options', 'information-reel', 'IR_Admin_Options' );
 }
 
 function IR_Deactivation() 
@@ -331,7 +351,7 @@ class IR_widget_register extends WP_Widget
 {
 	function __construct() 
 	{
-		$widget_ops = array('classname' => 'ir_widget', 'description' => __('Information Reel'), 'information-reel');
+		$widget_ops = array('classname' => 'ir_widget', 'description' => __('Information Reel', 'information-reel'), 'information-reel');
 		parent::__construct('InformationReel', __('Information Reel', 'information-reel'), $widget_ops);
 	}
 	
@@ -394,7 +414,7 @@ class IR_widget_register extends WP_Widget
 		$IR_random 		= $instance['IR_random'];
 		?>
 		<p>
-            <label for="<?php echo $this->get_field_id('IR_Title'); ?>"><?php _e('Title', 'information-reel'); ?></label>
+            <label for="<?php echo $this->get_field_id('IR_Title'); ?>"><?php _e('Widget Title', 'information-reel'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('IR_Title'); ?>" name="<?php echo $this->get_field_name('IR_Title'); ?>" type="text" value="<?php echo $IR_Title; ?>" />
         </p>
 		<p>
@@ -410,7 +430,7 @@ class IR_widget_register extends WP_Widget
             <input class="widefat" id="<?php echo $this->get_field_id('IR_TextLength'); ?>" name="<?php echo $this->get_field_name('IR_TextLength'); ?>" type="text" value="<?php echo $IR_TextLength; ?>" maxlength="3" />
         </p>
 		<p>
-            <label for="<?php echo $this->get_field_id('IR_type'); ?>"><?php _e('Content group', 'information-reel'); ?></label>
+            <label for="<?php echo $this->get_field_id('IR_type'); ?>"><?php _e('Content group', 'information-reel'); ?></label><br />
 			<select class="" id="<?php echo $this->get_field_id('IR_type'); ?>" name="<?php echo $this->get_field_name('IR_type'); ?>" style="width:130px;">
 				<option value="">Select</option>
 				<?php
@@ -427,14 +447,14 @@ class IR_widget_register extends WP_Widget
 			</select>
         </p>
 		<p>
-            <label for="<?php echo $this->get_field_id('IR_random'); ?>"><?php _e('Random order', 'information-reel'); ?></label>
+            <label for="<?php echo $this->get_field_id('IR_random'); ?>"><?php _e('Random order', 'information-reel'); ?></label><br />
 			<select class="" id="<?php echo $this->get_field_id('IR_random'); ?>" name="<?php echo $this->get_field_name('IR_random'); ?>" style="width:130px;">
 				<option value="">Select</option>
 				<option value="YES" <?php $this->IR_render_selected($IR_random=='YES'); ?>>YES</option>
 				<option value="NO" <?php $this->IR_render_selected($IR_random=='NO'); ?>>NO</option>
 			</select>
         </p>
-		<p>For more information <a target="_blank" href="<?php echo WP_IR_FAV; ?>">click here</a></p>
+		<p><?php _e('For more information', 'information-reel'); ?> <a target="_blank" href="<?php echo WP_IR_FAV; ?>"><?php _e('click here', 'information-reel'); ?></a></p>
 		<?php
 	}
 	
@@ -470,6 +490,12 @@ function IR_widget_loading()
 	register_widget( 'IR_widget_register' );
 }
 
+function IR_textdomain() 
+{
+	  load_plugin_textdomain( 'information-reel', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'IR_textdomain');
 add_action('init', 'IR_add_javascript_files');
 add_action( 'widgets_init', 'IR_widget_loading');
 register_activation_hook(__FILE__, 'IR_Install');
