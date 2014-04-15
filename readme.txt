@@ -3,7 +3,7 @@ Contributors: www.gopiplus.com, gopiplus
 Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Author URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
-Tags:  Announcement, Scroller, Message, Scroll, Text scroll, News
+Tags:  Announcement, Scroller, Reel, Scroll, Text scroll
 Requires at least: 3.4
 Tested up to: 3.9
 Stable tag: 8.1
