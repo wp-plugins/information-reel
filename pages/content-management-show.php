@@ -1,9 +1,5 @@
+<?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
 <?php
-// Stop direct call
-if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { 
-	die('You are not allowed to call this page directly.'); 
-}
-
 // Form submitted, check the data
 if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
 {
@@ -53,7 +49,10 @@ if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
 ?>
 <div class="wrap">
   <div id="icon-edit" class="icon32 icon32-posts-post"></div>
-    <h2><?php _e(WP_IR_TITLE, 'information-reel'); ?><a class="add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=information-reel&amp;ac=add"><?php _e('Add New', 'information-reel'); ?></a></h2>
+    <h2><?php _e(WP_IR_TITLE, 'information-reel'); ?>
+	<a class="add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=information-reel&amp;ac=add">
+	<?php _e('Add New', 'information-reel'); ?>
+	</a></h2>
     <div class="tool-box">
 	<?php
 		$sSql = "SELECT * FROM `".WP_IR_TABLE."` order by IR_type, IR_order";
@@ -86,41 +85,38 @@ if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
 		<tbody>
 			<?php 
 			$i = 0;
-			$displayisthere = FALSE;
-			foreach ($myData as $data)
+			if(count($myData) > 0 )
 			{
-				if(strtoupper($data['IR_status']) == 'YES') 
+				foreach ($myData as $data)
 				{
-					$displayisthere = TRUE; 
-				}
-				$IR_desc = substr(esc_html(stripslashes($data['IR_desc'])), 0, 100);
-				?>
-				<tr class="<?php if ($i&1) { echo'alternate'; } else { echo ''; }?>">
-					<td align="left"><input type="checkbox" value="<?php echo $data['IR_id']; ?>" name="IR_group_item[]"></th>
-					<td>
-					<?php echo esc_html(stripslashes($data['IR_title'])); ?>
-					<div class="row-actions">
-					<span class="edit">
-					<a title="Edit" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=information-reel&amp;ac=edit&amp;did=<?php echo $data['IR_id']; ?>"><?php _e('Edit', 'information-reel'); ?></a> | </span>
-					<span class="trash">
-						<a onClick="javascript:IR_delete('<?php echo $data['IR_id']; ?>')" href="javascript:void(0);"><?php _e('Delete', 'information-reel'); ?></a>
-					</span> 
-					</div>
-					</td>
-					<td><?php echo $IR_desc; ?>...</td>
-					<td><?php echo $data['IR_type']; ?></td>
-					<td><?php echo $data['IR_status']; ?></td>
-					<td><?php echo $data['IR_order']; ?></td>
-				</tr>
-				<?php 
-				$i = $i+1; 
+					$IR_desc = substr(esc_html(stripslashes($data['IR_desc'])), 0, 100);
+					?>
+					<tr class="<?php if ($i&1) { echo'alternate'; } else { echo ''; }?>">
+						<td align="left"><input type="checkbox" value="<?php echo $data['IR_id']; ?>" name="IR_group_item[]"></th>
+						<td>
+						<?php echo esc_html(stripslashes($data['IR_title'])); ?>
+						<div class="row-actions">
+						<span class="edit">
+						<a title="Edit" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=information-reel&ac=edit&did=<?php echo $data['IR_id']; ?>">
+						<?php _e('Edit', 'information-reel'); ?></a> | </span>
+						<span class="trash">
+							<a onClick="javascript:IR_delete('<?php echo $data['IR_id']; ?>')" href="javascript:void(0);"><?php _e('Delete', 'information-reel'); ?></a>
+						</span> 
+						</div>
+						</td>
+						<td><?php echo $IR_desc; ?>...</td>
+						<td><?php echo $data['IR_type']; ?></td>
+						<td><?php echo $data['IR_status']; ?></td>
+						<td><?php echo $data['IR_order']; ?></td>
+					</tr>
+					<?php 
+					$i = $i+1; 
 				} 
-			?>
-			<?php 
-			if ($displayisthere == FALSE) 
-			{ 
+			}
+			else
+			{
 				?><tr><td colspan="6" align="center"><?php _e('No records available.', 'information-reel'); ?></td></tr><?php 
-			} 
+			}
 			?>
 		</tbody>
         </table>
@@ -129,17 +125,19 @@ if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
       </form>	
 	  <div>
 	  <h2>
-		  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=information-reel&amp;ac=add"><?php _e('Add New', 'information-reel'); ?></a>
+		  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=information-reel&amp;ac=add">
+		  		<?php _e('Add New', 'information-reel'); ?>
+		  </a>
 		  <a class="button add-new-h2" target="_blank" href="<?php echo WP_IR_FAV; ?>"><?php _e('Help', 'information-reel'); ?></a>
 	  </h2>
 	  </div>
 		<h3><?php _e('Plugin configuration option', 'information-reel'); ?></h3>
 		<ul>
 			<li><?php _e('Drag and drop the widget to your sidebar.', 'information-reel'); ?></li>
-			<li>
-			<?php _e('Check official website for more information', 'information-reel'); ?>
-				<a target="_blank" href="<?php echo WP_IR_FAV; ?>"><?php _e('click here', 'information-reel'); ?></a>
-			</li>
 		</ul>
 	</div>
+	<p class="description">
+	<?php _e('Check official website for more information', 'information-reel'); ?>
+	<a target="_blank" href="<?php echo WP_IR_FAV; ?>"><?php _e('click here', 'information-reel'); ?></a>
+	</p>
 </div>

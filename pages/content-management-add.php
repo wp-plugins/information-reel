@@ -1,9 +1,4 @@
-<?php
-// Stop direct call
-if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { 
-	die('You are not allowed to call this page directly.'); 
-}
-?>
+<?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
 <div class="wrap">
 <?php
 $IR_errors = array();

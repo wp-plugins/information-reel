@@ -5,12 +5,12 @@ Author URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags:  Announcement, Scroller, Message, Scroll, Text scroll, News
 Requires at least: 3.4
-Tested up to: 3.8
-Stable tag: 8.0
+Tested up to: 3.9
+Stable tag: 8.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
-This plugin scroll the entered title, image, and description in your word press website. This is best way to announce your message to user.
+This plugin scroll the entered title, image, and description in your word press website. This is best way to announce your messages to user.
 
 == Description ==
 
@@ -23,13 +23,68 @@ Check official website for live demo [http://www.gopiplus.com/work/2011/04/16/wo
 
 Information Reel wordpress plugin create the reel type scroll in the website widget. The scroll contain the entered title, image, and description. This is best way to announce your messages to user.
 
-Feature of this plugin
+= Feature of this plugin =
 
 1. Easy installation.
 2. Easy customization.
 3. Easy scroll setting.
 4. Option to display title with link.
-5. Option to display image in the scroll
+5. Option to display image in the scroll.
+6. Supports localization.
+
+= Plugin configuration =
+
+1. Drag and drop the widget.
+
+Go to Widgets page under Appearance menu, Drag and drop Information Reel widget into your side bar. It’s very easy.
+
+= Frequently asked questions =
+
+Q1. Can we display more announcements at same time?
+
+Yes, it’s scrolling so we can display many at same time.
+
+Q2. Can we display announcement in random order?
+
+Yes, Random option setting available in the widget form.
+
+Q3. Can we arrange the announcement scroll order?
+
+Yes, in the plugin admin page we have option to enter order position.
+
+Q4. Can we hide any announcement temporary?
+
+Yes, in the plugin admin page we have display option YES or NO.
+
+Q5. Can we set expiration for announcement?
+
+Yes, at present (version 7.0) this option is not included. we will add the option soon.
+
+Q6. Why my reel content out of range?
+
+This is because of the Height setting in the widget form. Increase the Height and see the output.
+
+Q7. Why my reel content merge each other?
+
+This is because of the Height setting in the widget form. Increase the height and see the output.
+
+Q8. How many message display at same time?
+
+Option available in the widget form page.
+
+Q9. What is Same Time Display, Text Length, Content Group?
+
+Same Time Display: No of announcement you want to show in the screen at same time.
+Text Length: This is to maintain the announcement description text length.
+Content group: This is to group the content. Example: if you select GROUP1 in the widget form, in the front-end you will get content from the group GROUP1.
+
+Q10. Plugin admin link?
+
+Administration ==> Settings ==> Information Reel
+
+Q11. Widget setting default form link?
+
+Its available in the widget, Please check below admin screens for for more information.
 
 == Installation ==	
 
@@ -63,9 +118,15 @@ Q11. Widget setting default form link?
 
 == Screenshots ==
 
-1. [Screen shots](http://www.gopiplus.com/work/2013/08/25/information-reel-wordpress-plugin-screenshots/)
+1. Front Page screen. http://www.gopiplus.com/work/2013/08/25/information-reel-wordpress-plugin-screenshots/
+
+1. Admin screen. http://www.gopiplus.com/work/2013/08/25/information-reel-wordpress-plugin-screenshots/
 
 == Upgrade Notice ==
+
+= 8.1 =
+
+1. Tested up to 3.9
 
 = 8.0 =
 
@@ -111,6 +172,10 @@ Tested up to 3.5
 1. First version
 
 == Changelog ==
+
+= 8.1 =
+
+1. Tested up to 3.9
 
 = 8.0 =
 

@@ -1,11 +1,10 @@
 <?php
-
 /*
 Plugin Name: Information Reel
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
-Description: This plugin scroll the entered title, image, and description in your word press website. This is best way to announce your message to user. Live demo availabe in the plugin site.
-Author: Gopi.R
-Version: 8.0
+Description: Information Reel wordpress plugin create the reel type scroll in the website widget. The scroll contain the entered title, image, and description. This is best way to announce your messages to user.
+Author: Gopi Ramasamy
+Version: 8.1
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags: Announcement, Scroller, Message, Scroll, Text scroll, News
@@ -17,7 +16,7 @@ global $wpdb, $wp_version, $ir_db_version;
 define("WP_IR_TABLE", $wpdb->prefix . "information_reel");
 define("WP_IR_TITLE", "Information Reel");
 define('WP_IR_FAV', 'http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/');
-$ir_db_version = "8.0";
+$ir_db_version = "8.1";
 
 function IR_Show() 
 {
@@ -178,7 +177,6 @@ function IR_Show_Widget( $atts )
 			
 			$IRhtml = $IRhtml . "</div>";
 			
-			
 			$IR_x = $IR_x . "IR[$IR_count] = '<div class=\'IR_div\' style=\'height:$IR_Heights;padding:1px 0px 1px 0px;\'>$IRjsjs</div>'; ";	
 			$IR_count++;
 		}
@@ -195,29 +193,31 @@ function IR_Show_Widget( $atts )
 			$IR_Height_New = ($IR_count  * $IR_Height);
 		}
 		?>
-<div style="padding-top:8px;padding-bottom:8px;">
-  <div style="text-align:left;vertical-align:middle;text-decoration: none;overflow: hidden; position: relative; margin-left: 3px; height: <?php echo @$IR_Height; ?>px;" id="IRHolder"> <?php echo $IRhtml; ?> </div>
-</div>
-<script type="text/javascript">
+		<div style="padding-top:8px;padding-bottom:8px;">
+		 <div style="text-align:left;vertical-align:middle;text-decoration: none;overflow: hidden; position: relative; margin-left: 3px; height: <?php echo $IR_Height; ?>px;" id="IRHolder"> 
+		 	<?php echo $IRhtml; ?> 
+		 </div>
+		</div>
+		<script type="text/javascript">
 		var IR	= new Array();
 		var objIR	= '';
 		var IR_scrollPos 	= '';
 		var IR_numScrolls	= '';
-		var IR_heightOfElm = '<?php echo $IR_Height; ?>'; // Height of each element (px)
+		var IR_heightOfElm = '<?php echo $IR_Height; ?>';
 		var IR_numberOfElm = '<?php echo $IR_count; ?>';
 		var IR_scrollOn 	= 'true';
 		function createIRScroll() 
 		{
 			<?php echo $IR_x; ?>
 			objIR	= document.getElementById('IRHolder');
-			objIR.style.height = (IR_numberOfElm * IR_heightOfElm) + 'px'; // Set height of DIV
+			objIR.style.height = (IR_numberOfElm * IR_heightOfElm) + 'px';
 			IRContent();
 		}
-		</script> 
-<script type="text/javascript">
+		</script>
+		<script type="text/javascript">
 		createIRScroll();
 		</script>
-<?php
+		<?php
 	}
 	else
 	{
@@ -239,7 +239,7 @@ function IR_Install()
 	{
 		$IR_tableexists = "NO";
 	}
-	
+	//die();
 	if(($IR_tableexists == "NO") || ($IR_pluginversion != $ir_db_version)) 
 	{
 		$sSql = "CREATE TABLE ". WP_IR_TABLE . " (
@@ -257,28 +257,30 @@ function IR_Install()
 		  ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
   		dbDelta( $sSql );
-		
 		if($IR_pluginversion == "")
 		{
-			add_option('IR_pluginversion', "8.0");
+			add_option('IR_pluginversion', "8.1");
 		}
 		else
 		{
 			update_option( "IR_pluginversion", $ir_db_version );
 		}
 		
-		$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
-		$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_1.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','1', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
-		$wpdb->query($sSql);
-		$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
-		$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_2.jpg','#','_blank','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','2', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
-		$wpdb->query($sSql);
-		$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
-		$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_3.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','3', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
-		$wpdb->query($sSql);
-		$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
-		$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_4.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','4', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
-		$wpdb->query($sSql);
+		if ($IR_tableexists == 'NO')
+		{
+			$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
+			$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_1.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','1', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
+			$wpdb->query($sSql);
+			$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
+			$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_2.jpg','#','_blank','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','2', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
+			$wpdb->query($sSql);
+			$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
+			$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_3.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','3', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
+			$wpdb->query($sSql);
+			$sSql = "INSERT INTO ". WP_IR_TABLE . " (IR_path, IR_link, IR_target, IR_title, IR_desc, IR_order, IR_status, IR_type, IR_date)"; 
+			$sSql = $sSql . "VALUES ('".get_option('siteurl')."/wp-content/plugins/information-reel/images/sing_4.jpg','#','_self','Lorem Ipsum is simply.','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.','4', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
+			$wpdb->query($sSql);
+		}
 	}
 	add_option('IR_Title', "Information Reel");
 	add_option('IR_Height', "160");
