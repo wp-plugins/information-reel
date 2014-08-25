@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags:  Announcement, Scroller, Reel, Scroll, Text scroll
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 8.1
+Tested up to: 4.0
+Stable tag: 8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -124,6 +124,10 @@ Q11. Widget setting default form link?
 
 == Upgrade Notice ==
 
+= 8.2 =
+
+1. Tested up to 4.0
+
 = 8.1 =
 
 1. Tested up to 3.9
@@ -172,6 +176,10 @@ Tested up to 3.5
 1. First version
 
 == Changelog ==
+
+= 8.2 =
+
+1. Tested up to 4.0
 
 = 8.1 =
 

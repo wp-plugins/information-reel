@@ -4,7 +4,7 @@ Plugin Name: Information Reel
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Description: Information Reel wordpress plugin create the reel type scroll in the website widget. The scroll contain the entered title, image, and description. This is best way to announce your messages to user.
 Author: Gopi Ramasamy
-Version: 8.1
+Version: 8.2
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags: Announcement, Scroller, Message, Scroll, Text scroll, News
@@ -422,14 +422,17 @@ class IR_widget_register extends WP_Widget
 		<p>
             <label for="<?php echo $this->get_field_id('IR_Height'); ?>"><?php _e('Height', 'information-reel'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('IR_Height'); ?>" name="<?php echo $this->get_field_name('IR_Height'); ?>" type="text" value="<?php echo $IR_Height; ?>" maxlength="3" />
+			<?php _e('If any overlap in the reel at front end, you should arrange(increase/decrease) the above height.', 'information-reel'); ?>
         </p>
 		<p>
             <label for="<?php echo $this->get_field_id('IR_SameTime'); ?>"><?php _e('Same time display', 'information-reel'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('IR_SameTime'); ?>" name="<?php echo $this->get_field_name('IR_SameTime'); ?>" type="text" value="<?php echo $IR_SameTime; ?>" maxlength="3" />
+			<?php _e('Please enter number of records you want to display at the same time in scroll.', 'information-reel'); ?>
         </p>
 		<p>
             <label for="<?php echo $this->get_field_id('IR_TextLength'); ?>"><?php _e('Text length', 'information-reel'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('IR_TextLength'); ?>" name="<?php echo $this->get_field_name('IR_TextLength'); ?>" type="text" value="<?php echo $IR_TextLength; ?>" maxlength="3" />
+			<?php _e('Please enter max number of character to display in the scroll.', 'information-reel'); ?>
         </p>
 		<p>
             <label for="<?php echo $this->get_field_id('IR_type'); ?>"><?php _e('Content group', 'information-reel'); ?></label><br />
