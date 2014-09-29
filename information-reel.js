@@ -30,7 +30,9 @@ function scrollIR() {
 			}
 		}
 	} else {
-		setTimeout("scrollIR();", 10);
+		/* Speed values: 10 slow, 50 fast */
+		var speed = 60 - ( IR_speed * 10 );
+		setTimeout("scrollIR();", speed);
 	}
 }
 
@@ -64,5 +66,5 @@ function IRContent() {
 	IR_numScrolls 	= IR.length;
 	objIR.scrollTop 	= '0';
 	// start scrolling
-	setTimeout("scrollIR();", 2000);
+	setTimeout("scrollIR();", IR_waitseconds * 2000);
 }

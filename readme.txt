@@ -6,7 +6,7 @@ Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information
 Tags:  Announcement, Scroller, Reel, Scroll, Text scroll
 Requires at least: 3.4
 Tested up to: 4.0
-Stable tag: 8.2
+Stable tag: 8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -34,15 +34,13 @@ Information Reel wordpress plugin create the reel type scroll in the website wid
 
 = Plugin configuration =
 
-1. Drag and drop the widget.
-
 Go to Widgets page under Appearance menu, Drag and drop Information Reel widget into your side bar. It’s very easy.
 
 = Frequently asked questions =
 
 Q1. Can we display more announcements at same time?
 
-Yes, it’s scrolling so we can display many at same time.
+Yes, its scrolling so we can display many at same time.
 
 Q2. Can we display announcement in random order?
 
@@ -124,6 +122,10 @@ Q11. Widget setting default form link?
 
 == Upgrade Notice ==
 
+= 8.3 =
+
+1. New option added in widget setting form to control scrolling speed and delay.
+
 = 8.2 =
 
 1. Tested up to 4.0
@@ -176,6 +178,10 @@ Tested up to 3.5
 1. First version
 
 == Changelog ==
+
+= 8.3 =
+
+1. New option added in widget setting form to control scrolling speed and delay.
 
 = 8.2 =
 

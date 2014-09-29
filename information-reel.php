@@ -4,7 +4,7 @@ Plugin Name: Information Reel
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Description: Information Reel wordpress plugin create the reel type scroll in the website widget. The scroll contain the entered title, image, and description. This is best way to announce your messages to user.
 Author: Gopi Ramasamy
-Version: 8.2
+Version: 8.3
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags: Announcement, Scroller, Message, Scroll, Text scroll, News
@@ -36,6 +36,8 @@ function IR_Show_Widget( $atts )
 	$IR_Height	 	= "";
 	$IR_type 		= "";
 	$IR_random 		= "";
+	$IR_speed 		= "";
+	$IR_waitseconds = "";
 
 	if ( is_array( $atts ) )
 	{
@@ -60,6 +62,14 @@ function IR_Show_Widget( $atts )
 			elseif($key == "IR_random")
 			{
 				$IR_random = $atts["IR_random"];
+			}
+			elseif($key == "IR_speed")
+			{
+				$IR_speed = $atts["IR_speed"];
+			}
+			elseif($key == "IR_waitseconds")
+			{
+				$IR_waitseconds = $atts["IR_waitseconds"];
 			}
 		}
 	}
@@ -88,6 +98,9 @@ function IR_Show_Widget( $atts )
 	if(!is_numeric($IR_SameTime)){ $IR_SameTime = 5; }
 	if(!is_numeric($IR_Height)){ $IR_Height = 50; }
 
+	if(!is_numeric($IR_speed)) { $IR_speed = 2; }
+	if(!is_numeric($IR_waitseconds)) { $IR_waitseconds = 2; }
+	
 	$sSql = "select IR_path,IR_link,IR_target,IR_title,IR_desc from ".WP_IR_TABLE." where 1=1 and IR_status='YES'";
 	if($IR_type <> "" )
 	{
@@ -203,8 +216,10 @@ function IR_Show_Widget( $atts )
 		var objIR	= '';
 		var IR_scrollPos 	= '';
 		var IR_numScrolls	= '';
-		var IR_heightOfElm = '<?php echo $IR_Height; ?>';
-		var IR_numberOfElm = '<?php echo $IR_count; ?>';
+		var IR_heightOfElm 	= '<?php echo $IR_Height; ?>';
+		var IR_numberOfElm 	= '<?php echo $IR_count; ?>';
+		var IR_speed 		= '<?php echo $IR_speed; ?>';
+		var IR_waitseconds 	= '<?php echo $IR_waitseconds; ?>';
 		var IR_scrollOn 	= 'true';
 		function createIRScroll() 
 		{
@@ -366,6 +381,8 @@ class IR_widget_register extends WP_Widget
 		$IR_TextLength	= $instance['IR_TextLength'];
 		$IR_type		= $instance['IR_type'];
 		$IR_random		= $instance['IR_random'];
+		$IR_speed		= $instance['IR_speed'];
+		$IR_waitseconds	= $instance['IR_waitseconds'];
 		
 		echo $args['before_widget'];
 		if ( ! empty( $IR_Title ) )
@@ -380,6 +397,8 @@ class IR_widget_register extends WP_Widget
 		$arr["IR_Height"] = $IR_Height;
 		$arr["IR_type"] = $IR_type;
 		$arr["IR_random"] = $IR_random;
+		$arr["IR_speed"] = $IR_speed;
+		$arr["IR_waitseconds"] = $IR_waitseconds;
 		IR_Show_Widget($arr);
 		// Call widget method
 		echo $args['after_widget'];
@@ -394,6 +413,8 @@ class IR_widget_register extends WP_Widget
 		$instance['IR_TextLength'] 	= ( ! empty( $new_instance['IR_TextLength'] ) ) ? strip_tags( $new_instance['IR_TextLength'] ) : '';
 		$instance['IR_type'] 		= ( ! empty( $new_instance['IR_type'] ) ) ? strip_tags( $new_instance['IR_type'] ) : '';
 		$instance['IR_random'] 		= ( ! empty( $new_instance['IR_random'] ) ) ? strip_tags( $new_instance['IR_random'] ) : '';
+		$instance['IR_speed'] 		= ( ! empty( $new_instance['IR_speed'] ) ) ? strip_tags( $new_instance['IR_speed'] ) : '';
+		$instance['IR_waitseconds'] = ( ! empty( $new_instance['IR_waitseconds'] ) ) ? strip_tags( $new_instance['IR_waitseconds'] ) : '';
 		return $instance;
 	}
 	
@@ -405,7 +426,9 @@ class IR_widget_register extends WP_Widget
             'IR_SameTime' 	=> '',
             'IR_TextLength' => '',
 			'IR_type' 		=> '',
-			'IR_random' 	=> ''
+			'IR_random' 	=> '',
+			'IR_speed' 		=> '',
+			'IR_waitseconds' => ''
         );
 		$instance 		= wp_parse_args( (array) $instance, $defaults);
         $IR_Title 		= $instance['IR_Title'];
@@ -414,6 +437,8 @@ class IR_widget_register extends WP_Widget
         $IR_TextLength 	= $instance['IR_TextLength'];
 		$IR_type 		= $instance['IR_type'];
 		$IR_random 		= $instance['IR_random'];
+		$IR_speed 		= $instance['IR_speed'];
+		$IR_waitseconds = $instance['IR_waitseconds'];
 		?>
 		<p>
             <label for="<?php echo $this->get_field_id('IR_Title'); ?>"><?php _e('Widget Title', 'information-reel'); ?></label>
@@ -458,6 +483,28 @@ class IR_widget_register extends WP_Widget
 				<option value="YES" <?php $this->IR_render_selected($IR_random=='YES'); ?>>YES</option>
 				<option value="NO" <?php $this->IR_render_selected($IR_random=='NO'); ?>>NO</option>
 			</select>
+        </p>
+		<p>
+            <label for="<?php echo $this->get_field_id('IR_speed'); ?>"><?php _e('Scrolling speed', 'information-reel'); ?></label><br />
+			<select class="" id="<?php echo $this->get_field_id('IR_speed'); ?>" name="<?php echo $this->get_field_name('IR_speed'); ?>" style="width:130px;">
+				<option value="">Select</option>
+				<option value="1" <?php $this->IR_render_selected($IR_speed=='1'); ?>>1</option>
+				<option value="2" <?php $this->IR_render_selected($IR_speed=='2'); ?>>2</option>
+				<option value="3" <?php $this->IR_render_selected($IR_speed=='3'); ?>>3</option>
+				<option value="4" <?php $this->IR_render_selected($IR_speed=='4'); ?>>4</option>
+				<option value="5" <?php $this->IR_render_selected($IR_speed=='5'); ?>>5</option>
+				<option value="6" <?php $this->IR_render_selected($IR_speed=='6'); ?>>6</option>
+				<option value="7" <?php $this->IR_render_selected($IR_speed=='7'); ?>>7</option>
+				<option value="8" <?php $this->IR_render_selected($IR_speed=='8'); ?>>8</option>
+				<option value="9" <?php $this->IR_render_selected($IR_speed=='9'); ?>>9</option>
+				<option value="10" <?php $this->IR_render_selected($IR_speed=='10'); ?>>10</option>
+			</select>
+			<?php _e('Select how fast you want the to scroll the items.', 'information-reel'); ?>
+        </p>
+		<p>
+            <label for="<?php echo $this->get_field_id('IR_waitseconds'); ?>"><?php _e('Seconds to wait', 'information-reel'); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id('IR_waitseconds'); ?>" name="<?php echo $this->get_field_name('IR_waitseconds'); ?>" type="text" value="<?php echo $IR_waitseconds; ?>" maxlength="3" />
+			<?php _e('How many seconds you want to wait to scroll. Enter only number.', 'information-reel'); ?>
         </p>
 		<p><?php _e('For more information', 'information-reel'); ?> <a target="_blank" href="<?php echo WP_IR_FAV; ?>"><?php _e('click here', 'information-reel'); ?></a></p>
 		<?php

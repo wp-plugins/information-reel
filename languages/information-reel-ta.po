@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Information Reel 8.0\n"
-"POT-Creation-Date: 2014-08-03 15:26+0800\n"
-"PO-Revision-Date: 2014-08-03 15:26+0800\n"
+"POT-Creation-Date: 2014-09-29 22:05+0800\n"
+"PO-Revision-Date: 2014-09-29 22:05+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,60 +13,76 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../information-reel.php:225
+#: ../information-reel.php:240
 msgid "No data available! Please check widget setting."
 msgstr "எதுவும் கிடைக்கவில்லை"
 
-#: ../information-reel.php:316 ../information-reel.php:356
-#: ../information-reel.php:357
+#: ../information-reel.php:331 ../information-reel.php:371
+#: ../information-reel.php:372
 msgid "Information Reel"
 msgstr "தகவல் ரீல்"
 
-#: ../information-reel.php:419
+#: ../information-reel.php:444
 msgid "Widget Title"
 msgstr "பக்கப்பட்டி தலைப்பு"
 
-#: ../information-reel.php:423
+#: ../information-reel.php:448
 msgid "Height"
 msgstr "உயரம்"
 
-#: ../information-reel.php:425
+#: ../information-reel.php:450
 msgid ""
 "If any overlap in the reel at front end, you should arrange(increase/"
 "decrease) the above height."
 msgstr ""
 
-#: ../information-reel.php:428
+#: ../information-reel.php:453
 msgid "Same time display"
 msgstr "காட்சி எண்ணிக்கைகள்"
 
-#: ../information-reel.php:430
+#: ../information-reel.php:455
 msgid ""
 "Please enter number of records you want to display at the same time in "
 "scroll."
 msgstr ""
 
-#: ../information-reel.php:433
+#: ../information-reel.php:458
 msgid "Text length"
 msgstr "தலைப்பு நீளம்"
 
-#: ../information-reel.php:435
+#: ../information-reel.php:460
 msgid "Please enter max number of character to display in the scroll."
 msgstr ""
 
-#: ../information-reel.php:438
+#: ../information-reel.php:463
 msgid "Content group"
 msgstr "குழு"
 
-#: ../information-reel.php:455
+#: ../information-reel.php:480
 msgid "Random order"
 msgstr "ரேண்டம் வரிசை"
 
-#: ../information-reel.php:462
+#: ../information-reel.php:488
+msgid "Scrolling speed"
+msgstr ""
+
+#: ../information-reel.php:502
+msgid "Select how fast you want the to scroll the items."
+msgstr ""
+
+#: ../information-reel.php:505
+msgid "Seconds to wait"
+msgstr ""
+
+#: ../information-reel.php:507
+msgid "How many seconds you want to wait to scroll. Enter only number."
+msgstr ""
+
+#: ../information-reel.php:509
 msgid "For more information"
 msgstr "மேலும் தகவலுக்கு"
 
-#: ../information-reel.php:462 ../pages/content-management-add.php:171
+#: ../information-reel.php:509 ../pages/content-management-add.php:171
 #: ../pages/content-management-edit.php:201
 #: ../pages/content-management-show.php:141
 msgid "click here"
