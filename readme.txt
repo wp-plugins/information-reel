@@ -34,54 +34,43 @@ Information Reel wordpress plugin create the reel type scroll in the website wid
 
 = Plugin configuration =
 
-Go to Widgets page under Appearance menu, Drag and drop Information Reel widget into your side bar. It’s very easy.
+Go to Widgets page under Appearance menu, Drag and drop Information Reel widget into your side bar. Its very easy.
 
 = Frequently asked questions =
 
 Q1. Can we display more announcements at same time?
-
 Yes, its scrolling so we can display many at same time.
 
 Q2. Can we display announcement in random order?
-
 Yes, Random option setting available in the widget form.
 
 Q3. Can we arrange the announcement scroll order?
-
 Yes, in the plugin admin page we have option to enter order position.
 
 Q4. Can we hide any announcement temporary?
-
 Yes, in the plugin admin page we have display option YES or NO.
 
 Q5. Can we set expiration for announcement?
-
 Yes, at present (version 7.0) this option is not included. we will add the option soon.
 
 Q6. Why my reel content out of range?
-
 This is because of the Height setting in the widget form. Increase the Height and see the output.
 
 Q7. Why my reel content merge each other?
-
 This is because of the Height setting in the widget form. Increase the height and see the output.
 
 Q8. How many message display at same time?
-
 Option available in the widget form page.
 
 Q9. What is Same Time Display, Text Length, Content Group?
-
 Same Time Display: No of announcement you want to show in the screen at same time.
 Text Length: This is to maintain the announcement description text length.
 Content group: This is to group the content. Example: if you select GROUP1 in the widget form, in the front-end you will get content from the group GROUP1.
 
 Q10. Plugin admin link?
-
 Administration ==> Settings ==> Information Reel
 
 Q11. Widget setting default form link?
-
 Its available in the widget, Please check below admin screens for for more information.
 
 == Installation ==	
