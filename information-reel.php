@@ -4,7 +4,7 @@ Plugin Name: Information Reel
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Description: Information Reel wordpress plugin create the reel type scroll in the website widget. The scroll contain the entered title, image, and description. This is best way to announce your messages to user.
 Author: Gopi Ramasamy
-Version: 8.3
+Version: 8.4
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags: Announcement, Scroller, Message, Scroll, Text scroll, News
