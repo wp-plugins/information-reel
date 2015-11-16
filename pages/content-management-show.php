@@ -4,6 +4,7 @@
 if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
 {
 	$did = isset($_GET['did']) ? $_GET['did'] : '0';
+	if(!is_numeric($did)) { die('<p>Are you sure you want to do this?</p>'); }
 	
 	$IR_success = '';
 	$IR_success_msg = FALSE;
@@ -64,7 +65,7 @@ if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
       <table width="100%" class="widefat" id="straymanage">
         <thead>
           <tr>
-            <th class="check-column" scope="row"><input type="checkbox" name="IR_group_item[]" /></th>
+            <th class="check-column" scope="row" style="padding: 8px 2px;"><input type="checkbox" name="IR_group_item[]" /></th>
 			<th scope="col"><?php _e('Title', 'information-reel'); ?></th>
 			<th scope="col"><?php _e('Description', 'information-reel'); ?></th>
 			<th scope="col"><?php _e('Group', 'information-reel'); ?></th>
@@ -74,7 +75,7 @@ if (isset($_POST['frm_IR_display']) && $_POST['frm_IR_display'] == 'yes')
         </thead>
 		<tfoot>
           <tr>
-            <th class="check-column" scope="row"><input type="checkbox" name="IR_group_item[]" /></th>
+            <th class="check-column" scope="row" style="padding: 8px 2px;"><input type="checkbox" name="IR_group_item[]" /></th>
 			<th scope="col"><?php _e('Title', 'information-reel'); ?></th>
 			<th scope="col"><?php _e('Description', 'information-reel'); ?></th>
 			<th scope="col"><?php _e('Group', 'information-reel'); ?></th>

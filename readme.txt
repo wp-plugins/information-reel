@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information
 Plugin URI: http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/
 Tags:  Announcement, Scroller, Reel, Scroll, Text scroll
 Requires at least: 3.4
-Tested up to: 4.2.2
-Stable tag: 8.5
+Tested up to: 4.3.1
+Stable tag: 8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -73,6 +73,11 @@ Administration ==> Settings ==> Information Reel
 Q11. Widget setting default form link?
 Its available in the widget, Please check below admin screens for for more information.
 
+= Translators =
+
+* Tamil (ta) - [Gopi Ramasamy](http://www.gopiplus.com/)
+* Polish (pl_PL) - [Abdul Sattar](https://www.couponmachine.in/)
+
 == Installation ==	
 
 [Installation](http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/)	 	
@@ -107,9 +112,18 @@ Q11. Widget setting default form link?
 
 1. Front Page screen. http://www.gopiplus.com/work/2013/08/25/information-reel-wordpress-plugin-screenshots/
 
-1. Admin screen. http://www.gopiplus.com/work/2013/08/25/information-reel-wordpress-plugin-screenshots/
+2. Admin screen. http://www.gopiplus.com/work/2013/08/25/information-reel-wordpress-plugin-screenshots/
 
 == Upgrade Notice ==
+
+= 8.7 =
+
+1. Tested up to 4.3.1
+2. Text Domain slug has been added for Language Packs.
+
+= 8.6 =
+
+1. Tested up to 4.3
 
 = 8.5 =
 
@@ -175,6 +189,15 @@ Tested up to 3.5
 1. First version
 
 == Changelog ==
+
+= 8.7 =
+
+1. Tested up to 4.3.1
+2. Text Domain slug has been added for Language Packs.
+
+= 8.6 =
+
+1. Tested up to 4.3
 
 = 8.5 =
 

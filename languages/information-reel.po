@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Information Reel 8.0\n"
-"POT-Creation-Date: 2014-09-29 22:05+0800\n"
-"PO-Revision-Date: 2014-09-29 22:05+0800\n"
+"POT-Creation-Date: 2015-11-15 23:04+0800\n"
+"PO-Revision-Date: 2015-11-15 23:04+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -83,18 +83,18 @@ msgid "For more information"
 msgstr ""
 
 #: ../information-reel.php:509 ../pages/content-management-add.php:171
-#: ../pages/content-management-edit.php:201
-#: ../pages/content-management-show.php:141
+#: ../pages/content-management-edit.php:202
+#: ../pages/content-management-show.php:142
 msgid "click here"
 msgstr ""
 
 #: ../pages/content-management-add.php:29
-#: ../pages/content-management-edit.php:57
+#: ../pages/content-management-edit.php:58
 msgid "Please enter the image path."
 msgstr ""
 
 #: ../pages/content-management-add.php:36
-#: ../pages/content-management-edit.php:64
+#: ../pages/content-management-edit.php:65
 msgid "Please enter the target link."
 msgstr ""
 
@@ -103,12 +103,12 @@ msgid "Details was successfully added."
 msgstr ""
 
 #: ../pages/content-management-add.php:89
-#: ../pages/content-management-edit.php:113
+#: ../pages/content-management-edit.php:114
 msgid "Click here"
 msgstr ""
 
 #: ../pages/content-management-add.php:90
-#: ../pages/content-management-edit.php:114
+#: ../pages/content-management-edit.php:115
 msgid " to view the details"
 msgstr ""
 
@@ -117,52 +117,52 @@ msgid "Add new content"
 msgstr ""
 
 #: ../pages/content-management-add.php:103
-#: ../pages/content-management-edit.php:127
+#: ../pages/content-management-edit.php:128
 msgid "Enter image path"
 msgstr ""
 
 #: ../pages/content-management-add.php:105
-#: ../pages/content-management-edit.php:129
+#: ../pages/content-management-edit.php:130
 msgid "Where is the picture located on the internet"
 msgstr ""
 
 #: ../pages/content-management-add.php:106
-#: ../pages/content-management-edit.php:130
+#: ../pages/content-management-edit.php:131
 msgid "Enter target link"
 msgstr ""
 
 #: ../pages/content-management-add.php:108
-#: ../pages/content-management-edit.php:132
+#: ../pages/content-management-edit.php:133
 msgid "When someone clicks on the picture, where do you want to send them"
 msgstr ""
 
 #: ../pages/content-management-add.php:109
-#: ../pages/content-management-edit.php:133
+#: ../pages/content-management-edit.php:134
 msgid "Enter target option"
 msgstr ""
 
 #: ../pages/content-management-add.php:116
-#: ../pages/content-management-edit.php:140
+#: ../pages/content-management-edit.php:141
 msgid "Do you want to open link in new window?"
 msgstr ""
 
 #: ../pages/content-management-add.php:117
-#: ../pages/content-management-edit.php:141
+#: ../pages/content-management-edit.php:142
 msgid "Enter title"
 msgstr ""
 
 #: ../pages/content-management-add.php:119
-#: ../pages/content-management-edit.php:143
+#: ../pages/content-management-edit.php:144
 msgid "Enter reel title in this box."
 msgstr ""
 
 #: ../pages/content-management-add.php:120
-#: ../pages/content-management-edit.php:144
+#: ../pages/content-management-edit.php:145
 msgid "Enter description"
 msgstr ""
 
 #: ../pages/content-management-add.php:122
-#: ../pages/content-management-edit.php:146
+#: ../pages/content-management-edit.php:147
 msgid "Enter reel content in this box."
 msgstr ""
 
@@ -171,27 +171,27 @@ msgid "Select content group/type"
 msgstr ""
 
 #: ../pages/content-management-add.php:149
-#: ../pages/content-management-edit.php:179
+#: ../pages/content-management-edit.php:180
 msgid "This is to group the content. Select your option to group the content."
 msgstr ""
 
 #: ../pages/content-management-add.php:150
-#: ../pages/content-management-edit.php:180
+#: ../pages/content-management-edit.php:181
 msgid "Display status"
 msgstr ""
 
 #: ../pages/content-management-add.php:155
-#: ../pages/content-management-edit.php:185
+#: ../pages/content-management-edit.php:186
 msgid "Do you want the content to show in your reel?"
 msgstr ""
 
 #: ../pages/content-management-add.php:156
-#: ../pages/content-management-edit.php:186
+#: ../pages/content-management-edit.php:187
 msgid "Display order"
 msgstr ""
 
 #: ../pages/content-management-add.php:158
-#: ../pages/content-management-edit.php:188
+#: ../pages/content-management-edit.php:189
 msgid "Content display order in the reel. should it come 1st, 2nd, 3rd, etc."
 msgstr ""
 
@@ -200,93 +200,93 @@ msgid "Insert Details"
 msgstr ""
 
 #: ../pages/content-management-add.php:163
-#: ../pages/content-management-edit.php:193
+#: ../pages/content-management-edit.php:194
 msgid "Cancel"
 msgstr ""
 
 #: ../pages/content-management-add.php:164
-#: ../pages/content-management-edit.php:194
-#: ../pages/content-management-show.php:131
+#: ../pages/content-management-edit.php:195
+#: ../pages/content-management-show.php:132
 msgid "Help"
 msgstr ""
 
 #: ../pages/content-management-add.php:170
-#: ../pages/content-management-edit.php:200
-#: ../pages/content-management-show.php:140
+#: ../pages/content-management-edit.php:201
+#: ../pages/content-management-show.php:141
 msgid "Check official website for more information"
 msgstr ""
 
-#: ../pages/content-management-edit.php:17
-#: ../pages/content-management-show.php:22
+#: ../pages/content-management-edit.php:18
+#: ../pages/content-management-show.php:23
 msgid "Oops, selected details doesnt exist."
 msgstr ""
 
-#: ../pages/content-management-edit.php:94
+#: ../pages/content-management-edit.php:95
 msgid "Details was successfully updated."
 msgstr ""
 
-#: ../pages/content-management-edit.php:126
+#: ../pages/content-management-edit.php:127
 msgid "Edit content"
 msgstr ""
 
-#: ../pages/content-management-edit.php:147
+#: ../pages/content-management-edit.php:148
 msgid "Select content type"
 msgstr ""
 
-#: ../pages/content-management-edit.php:192
+#: ../pages/content-management-edit.php:193
 msgid "Update Details"
 msgstr ""
 
-#: ../pages/content-management-show.php:40
+#: ../pages/content-management-show.php:41
 msgid "Selected record was successfully deleted."
 msgstr ""
 
-#: ../pages/content-management-show.php:54
-#: ../pages/content-management-show.php:129
+#: ../pages/content-management-show.php:55
+#: ../pages/content-management-show.php:130
 msgid "Add New"
-msgstr ""
-
-#: ../pages/content-management-show.php:68
-#: ../pages/content-management-show.php:78
-msgid "Title"
 msgstr ""
 
 #: ../pages/content-management-show.php:69
 #: ../pages/content-management-show.php:79
-msgid "Description"
+msgid "Title"
 msgstr ""
 
 #: ../pages/content-management-show.php:70
 #: ../pages/content-management-show.php:80
-msgid "Group"
+msgid "Description"
 msgstr ""
 
 #: ../pages/content-management-show.php:71
 #: ../pages/content-management-show.php:81
-msgid "Status"
+msgid "Group"
 msgstr ""
 
 #: ../pages/content-management-show.php:72
 #: ../pages/content-management-show.php:82
+msgid "Status"
+msgstr ""
+
+#: ../pages/content-management-show.php:73
+#: ../pages/content-management-show.php:83
 msgid "Order"
 msgstr ""
 
-#: ../pages/content-management-show.php:101
+#: ../pages/content-management-show.php:102
 msgid "Edit"
 msgstr ""
 
-#: ../pages/content-management-show.php:103
+#: ../pages/content-management-show.php:104
 msgid "Delete"
 msgstr ""
 
-#: ../pages/content-management-show.php:118
+#: ../pages/content-management-show.php:119
 msgid "No records available."
 msgstr ""
 
-#: ../pages/content-management-show.php:134
+#: ../pages/content-management-show.php:135
 msgid "Plugin configuration option"
 msgstr ""
 
-#: ../pages/content-management-show.php:136
+#: ../pages/content-management-show.php:137
 msgid "Drag and drop the widget to your sidebar."
 msgstr ""

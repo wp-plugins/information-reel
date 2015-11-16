@@ -1,295 +1,302 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Information Reel 8.0\n"
+"Project-Id-Version: Information Reel\n"
 "POT-Creation-Date: 2015-11-15 23:04+0800\n"
 "PO-Revision-Date: 2015-11-15 23:04+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__\n"
 "X-Poedit-Basepath: .\n"
+"X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../information-reel.php:240
 msgid "No data available! Please check widget setting."
-msgstr "எதுவும் கிடைக்கவில்லை"
+msgstr "Brak dostępnych danych! Proszę sprawdzić widget ustawienia."
 
 #: ../information-reel.php:331 ../information-reel.php:371
 #: ../information-reel.php:372
 msgid "Information Reel"
-msgstr "தகவல் ரீல்"
+msgstr "Informacje ogólne"
 
 #: ../information-reel.php:444
 msgid "Widget Title"
-msgstr "பக்கப்பட்டி தலைப்பு"
+msgstr "Tytuł widgetu"
 
 #: ../information-reel.php:448
 msgid "Height"
-msgstr "உயரம்"
+msgstr "Wysokość"
 
 #: ../information-reel.php:450
 msgid ""
 "If any overlap in the reel at front end, you should arrange(increase/"
 "decrease) the above height."
 msgstr ""
+"Jeżeli którykolwiek pokrywają w rolce w przód, należy zorganizować (wzrost / "
+"spadek) powyżej wysokości."
 
 #: ../information-reel.php:453
 msgid "Same time display"
-msgstr "காட்சி எண்ணிக்கைகள்"
+msgstr "Sam wyświetlacz czasu"
 
 #: ../information-reel.php:455
 msgid ""
 "Please enter number of records you want to display at the same time in "
 "scroll."
 msgstr ""
+"Podaj liczbę rekordów, które mają być wyświetlane w tym samym czasie w zwoju."
 
 #: ../information-reel.php:458
 msgid "Text length"
-msgstr "தலைப்பு நீளம்"
+msgstr "Długość tekstu"
 
 #: ../information-reel.php:460
 msgid "Please enter max number of character to display in the scroll."
-msgstr ""
+msgstr "Proszę podać numer max charakteru, aby wyświetlić w zwoju."
 
 #: ../information-reel.php:463
 msgid "Content group"
-msgstr "குழு"
+msgstr "Grupa treści"
 
 #: ../information-reel.php:480
 msgid "Random order"
-msgstr "ரேண்டம் வரிசை"
+msgstr "Kolejność losowa"
 
 #: ../information-reel.php:488
 msgid "Scrolling speed"
 msgstr ""
+"Ilości przewijania, oraz opóźnienie przewijania, ustawia szybkość "
+"przewijania."
 
 #: ../information-reel.php:502
 msgid "Select how fast you want the to scroll the items."
-msgstr ""
+msgstr "Zestaw jak szybko chcesz przewijać."
 
 #: ../information-reel.php:505
 msgid "Seconds to wait"
-msgstr ""
+msgstr "Sekund oczekiwania"
 
 #: ../information-reel.php:507
 msgid "How many seconds you want to wait to scroll. Enter only number."
-msgstr ""
+msgstr "Ile sekund chcesz czekać do przewijania. Wprowadź tylko liczby."
 
 #: ../information-reel.php:509
 msgid "For more information"
-msgstr "மேலும் தகவலுக்கு"
+msgstr "Sprawdzić oficjalną stronę internetową, aby uzyskać więcej informacji"
 
 #: ../information-reel.php:509 ../pages/content-management-add.php:171
 #: ../pages/content-management-edit.php:202
 #: ../pages/content-management-show.php:142
 msgid "click here"
-msgstr "இங்கே கிளிக் செய்யவும்"
+msgstr "kliknij tutaj"
 
 #: ../pages/content-management-add.php:29
 #: ../pages/content-management-edit.php:58
 msgid "Please enter the image path."
-msgstr "பட URL"
+msgstr "Image path (URL)"
 
 #: ../pages/content-management-add.php:36
 #: ../pages/content-management-edit.php:65
 msgid "Please enter the target link."
-msgstr "Please enter the target link."
+msgstr "Cel linku"
 
 #: ../pages/content-management-add.php:58
 msgid "Details was successfully added."
-msgstr "விவரங்கள் வெற்றிகரமாக சேர்க்கப்பட்டது."
+msgstr "Szczegóły został pomyślnie dodana."
 
 #: ../pages/content-management-add.php:89
 #: ../pages/content-management-edit.php:114
 msgid "Click here"
-msgstr "இங்கே கிளிக் செய்யவும்"
+msgstr "Kliknij tutaj"
 
 #: ../pages/content-management-add.php:90
 #: ../pages/content-management-edit.php:115
 msgid " to view the details"
-msgstr "விவரங்கள் பார்வையிட"
+msgstr "aby zobaczyć szczegóły"
 
 #: ../pages/content-management-add.php:102
 msgid "Add new content"
-msgstr "புதிய உள்ளடக்கத்தை சேர்க்க"
+msgstr "Dodaj nowe szczegóły obrazu"
 
 #: ../pages/content-management-add.php:103
 #: ../pages/content-management-edit.php:128
 msgid "Enter image path"
-msgstr "IMAGE பாதை"
+msgstr "Wprowadź ścieżka obrazu"
 
 #: ../pages/content-management-add.php:105
 #: ../pages/content-management-edit.php:130
 msgid "Where is the picture located on the internet"
-msgstr "Where is the picture located on the internet"
+msgstr "Gdzie jest obraz znajduje się w internecie"
 
 #: ../pages/content-management-add.php:106
 #: ../pages/content-management-edit.php:131
 msgid "Enter target link"
-msgstr "இணைப்பு"
+msgstr "Podaj cel"
 
 #: ../pages/content-management-add.php:108
 #: ../pages/content-management-edit.php:133
 msgid "When someone clicks on the picture, where do you want to send them"
-msgstr "When someone clicks on the picture, where do you want to send them"
+msgstr "Gdy ktoś kliknie na obraz, gdzie chcesz wysłać"
 
 #: ../pages/content-management-add.php:109
 #: ../pages/content-management-edit.php:134
 msgid "Enter target option"
-msgstr "இலக்கு"
+msgstr "Wprowadź opcję docelowej"
 
 #: ../pages/content-management-add.php:116
 #: ../pages/content-management-edit.php:141
 msgid "Do you want to open link in new window?"
-msgstr "Do you want to open link in new window?"
+msgstr "Czy chcesz, aby otworzyć łącze w nowym oknie?"
 
 #: ../pages/content-management-add.php:117
 #: ../pages/content-management-edit.php:142
 msgid "Enter title"
-msgstr "தலைப்பு சேர்க்கவும்"
+msgstr "Wprowadź tytuł"
 
 #: ../pages/content-management-add.php:119
 #: ../pages/content-management-edit.php:144
 msgid "Enter reel title in this box."
-msgstr "Enter reel title in this box."
+msgstr "Wprowadź tytuł bębnowy w tym polu."
 
 #: ../pages/content-management-add.php:120
 #: ../pages/content-management-edit.php:145
 msgid "Enter description"
-msgstr "விளக்கம் சேர்க்கவும்"
+msgstr "Długość tekstu"
 
 #: ../pages/content-management-add.php:122
 #: ../pages/content-management-edit.php:147
 msgid "Enter reel content in this box."
-msgstr "Enter reel content in this box."
+msgstr "Wpisz treść bębnowy w tym polu."
 
 #: ../pages/content-management-add.php:123
 msgid "Select content group/type"
-msgstr "குழு தேர்வு"
+msgstr "Wybierz treść grupy / typ"
 
 #: ../pages/content-management-add.php:149
 #: ../pages/content-management-edit.php:180
 msgid "This is to group the content. Select your option to group the content."
-msgstr "This is to group the content. Select your option to group the content."
+msgstr "To jest do grupy treść. Wybierz opcję grupie treści."
 
 #: ../pages/content-management-add.php:150
 #: ../pages/content-management-edit.php:181
 msgid "Display status"
-msgstr "காட்டு"
+msgstr "Stan wyświetlacza"
 
 #: ../pages/content-management-add.php:155
 #: ../pages/content-management-edit.php:186
 msgid "Do you want the content to show in your reel?"
-msgstr "Do you want the content to show in your reel?"
+msgstr "Chcesz treść pokazać w rolce?"
 
 #: ../pages/content-management-add.php:156
 #: ../pages/content-management-edit.php:187
 msgid "Display order"
-msgstr "ஒழுங்கு"
+msgstr "Kolejność wyświetlania"
 
 #: ../pages/content-management-add.php:158
 #: ../pages/content-management-edit.php:189
 msgid "Content display order in the reel. should it come 1st, 2nd, 3rd, etc."
-msgstr "Content display order in the reel. should it come 1st, 2nd, 3rd, etc."
+msgstr ""
+"Zawartość kolejność wyświetlania w rolce. powinno się na 1., 2., 3., etc."
 
 #: ../pages/content-management-add.php:162
 msgid "Insert Details"
-msgstr "சேமிக்கவும்"
+msgstr "Wstaw Szczegóły"
 
 #: ../pages/content-management-add.php:163
 #: ../pages/content-management-edit.php:194
 msgid "Cancel"
-msgstr "ரத்து"
+msgstr "Anuluj"
 
 #: ../pages/content-management-add.php:164
 #: ../pages/content-management-edit.php:195
 #: ../pages/content-management-show.php:132
 msgid "Help"
-msgstr "உதவி"
+msgstr "Pomoc"
 
 #: ../pages/content-management-add.php:170
 #: ../pages/content-management-edit.php:201
 #: ../pages/content-management-show.php:141
 msgid "Check official website for more information"
-msgstr "மேலும் தகவலுக்கு அதிகாரப்பூர்வ இணையதளம் பாருங்கள்"
+msgstr "Sprawdzić oficjalną stronę internetową, aby uzyskać więcej informacji"
 
 #: ../pages/content-management-edit.php:18
 #: ../pages/content-management-show.php:23
 msgid "Oops, selected details doesnt exist."
-msgstr "தேர்வு விவரங்கள் இல்லை."
+msgstr "Ups, wybrane szczegóły nie istnieją."
 
 #: ../pages/content-management-edit.php:95
 msgid "Details was successfully updated."
-msgstr "விவரங்கள் வெற்றிகரமாக புதுப்பிக்கப்பட்டது."
+msgstr "Szczegóły pomyślnie zaktualizowane."
 
 #: ../pages/content-management-edit.php:127
 msgid "Edit content"
-msgstr "பதிவுகள் புதுப்பித்தல்"
+msgstr "Edycja treści"
 
 #: ../pages/content-management-edit.php:148
 msgid "Select content type"
-msgstr "Select content type"
+msgstr "Wybierz typ zawartości"
 
 #: ../pages/content-management-edit.php:193
 msgid "Update Details"
-msgstr "சேமிக்கவும்"
+msgstr "aktualizacja danych szczegółowych"
 
 #: ../pages/content-management-show.php:41
 msgid "Selected record was successfully deleted."
-msgstr "வெற்றிகரமாக நீக்கப்பட்டது."
+msgstr "Wybrany rekord został pomyślnie usunięty."
 
 #: ../pages/content-management-show.php:55
 #: ../pages/content-management-show.php:130
 msgid "Add New"
-msgstr "சேர்"
+msgstr "Dodaj nowy"
 
 #: ../pages/content-management-show.php:69
 #: ../pages/content-management-show.php:79
 msgid "Title"
-msgstr "தலைப்பு"
+msgstr "Tytuł"
 
 #: ../pages/content-management-show.php:70
 #: ../pages/content-management-show.php:80
 msgid "Description"
-msgstr "விளக்கம்"
+msgstr "Opis"
 
 #: ../pages/content-management-show.php:71
 #: ../pages/content-management-show.php:81
 msgid "Group"
-msgstr "குழுக்கள்"
+msgstr "Miasto"
 
 #: ../pages/content-management-show.php:72
 #: ../pages/content-management-show.php:82
 msgid "Status"
-msgstr "காட்டு"
+msgstr "Status"
 
 #: ../pages/content-management-show.php:73
 #: ../pages/content-management-show.php:83
 msgid "Order"
-msgstr "ஒழுங்கு"
+msgstr "Kolejność"
 
 #: ../pages/content-management-show.php:102
 msgid "Edit"
-msgstr "திருத்து"
+msgstr "Edytuj"
 
 #: ../pages/content-management-show.php:104
 msgid "Delete"
-msgstr "நீக்கு"
+msgstr "Usuń"
 
 #: ../pages/content-management-show.php:119
 msgid "No records available."
-msgstr "ரெக்கார்ட்ஸ் கிடைக்கவில்லை"
+msgstr "Rejestry nie są dostępne."
 
 #: ../pages/content-management-show.php:135
 msgid "Plugin configuration option"
-msgstr " "
+msgstr "Opcja konfiguracji plugin"
 
 #: ../pages/content-management-show.php:137
 msgid "Drag and drop the widget to your sidebar."
-msgstr " "
+msgstr "Przeciągnij i upuść widżet (Wyświetlenie całej strony)"
 
 #~ msgid "Select"
-#~ msgstr "தேர்ந்தெடு"
+#~ msgstr "Wybierz"
